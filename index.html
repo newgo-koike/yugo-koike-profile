@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yugo Koike - Profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0b1528;
+  --bg-alt: #060e1c;
+  --bg-warm: #10192e;
+  --surface: rgba(17, 29, 53, 0.65);
+  --text: #d4b96a;
+  --text-light: #ecdfa8;
+  --text-dim: #6b5f3e;
+  --text-body: #9a8b5e;
+  --accent: #d4b96a;
+  --accent-bright: #f0d88a;
+  --accent-dim: rgba(212, 185, 106, 0.08);
+  --border: rgba(212, 185, 106, 0.1);
+  --border-hover: rgba(212, 185, 106, 0.28);
+  --card-shadow: 0 2px 24px rgba(0,0,0,0.25);
+  --section-gap: clamp(56px, 12vw, 88px);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text-body);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ─── Noise ─── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px;
+}
+
+/* ═══════════════════════════════════
+   HERO
+   ═══════════════════════════════════ */
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(40px, 10vw, 80px) 28px;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-alt);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 35% 30%, rgba(212,185,106,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 65% 70%, rgba(80,120,180,0.04) 0%, transparent 55%);
+  animation: heroShift 16s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes heroShift {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(2%, -2%) scale(1.03); }
+  100% { transform: translate(-1%, 1%) scale(0.98); }
+}
+
+/* Avatar */
+.avatar-wrap {
+  position: relative;
+  margin-bottom: clamp(24px, 5vw, 40px);
+}
+
+.avatar {
+  width: clamp(110px, 22vw, 150px);
+  height: clamp(110px, 22vw, 150px);
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 0 3px var(--bg-alt), 0 0 0 5px rgba(212,185,106,0.25);
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.avatar-ring {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  border-top-color: var(--accent);
+  border-right-color: rgba(212,185,106,0.25);
+  animation: spin 7s linear infinite;
+  z-index: 1;
+}
+
+.avatar-ring-outer {
+  position: absolute;
+  inset: -22px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-bottom-color: rgba(212,185,106,0.15);
+  animation: spin 12s linear infinite reverse;
+  z-index: 1;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.avatar-glow {
+  position: absolute;
+  inset: -36px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212,185,106,0.1) 0%, transparent 70%);
+  z-index: 0;
+  animation: pulse 5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,100% { opacity: .5; transform: scale(1); }
+  50%     { opacity: 1;  transform: scale(1.12); }
+}
+
+/* Hero Typography */
+.hero-name {
+  font-family: 'Playfair Display', 'Noto Sans JP', serif;
+  font-size: clamp(32px, 8vw, 56px);
+  font-weight: 700;
+  color: var(--text-light);
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.hero-name-en {
+  font-size: clamp(11px, 2vw, 13px);
+  color: var(--text-dim);
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: clamp(12px, 3vw, 20px);
+}
+
+.hero-badge {
+  display: inline-block;
+  font-size: clamp(11px, 2vw, 13px);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  border: 1px solid rgba(212,185,106,0.3);
+  padding: 6px 20px;
+  border-radius: 24px;
+  margin-bottom: clamp(20px, 4vw, 32px);
+}
+
+.hero-tagline {
+  font-family: 'Playfair Display', 'Noto Sans JP', serif;
+  font-size: clamp(15px, 3.2vw, 19px);
+  color: var(--text-body);
+  line-height: 2;
+  font-weight: 400;
+  max-width: 360px;
+}
+
+.hero-affiliations {
+  margin-top: clamp(28px, 5vw, 44px);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 380px;
+  padding: clamp(18px, 3.5vw, 22px) clamp(18px, 4vw, 24px);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-aff-item {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  align-items: baseline;
+  gap: 12px;
+  font-size: clamp(11px, 2.2vw, 13px);
+  text-align: left;
+}
+
+.hero-aff-role {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.hero-aff-name {
+  color: var(--text-light);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: clamp(20px, 4vw, 36px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-dim);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  animation: bob 2.5s ease-in-out infinite;
+}
+
+.scroll-cue::after {
+  content: '';
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+}
+
+@keyframes bob {
+  0%,100% { transform: translateY(0); opacity: 1; }
+  50%     { transform: translateY(8px); opacity: .4; }
+}
+
+/* ═══════════════════════════════════
+   SECTIONS
+   ═══════════════════════════════════ */
+.section {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: var(--section-gap) 28px;
+}
+
+/* Full-width dark band */
+.band {
+  background: var(--bg-alt);
+}
+
+.band-warm {
+  background: var(--bg-warm);
+}
+
+/* Section eyebrow */
+.eyebrow {
+  font-size: clamp(10px, 1.8vw, 11px);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: clamp(20px, 4vw, 32px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: var(--accent);
+}
+
+/* ═══════════════════════════════════
+   ABOUT
+   ═══════════════════════════════════ */
+.about-poem {
+  font-family: 'Playfair Display', 'Noto Sans JP', serif;
+  font-size: clamp(15px, 3vw, 18px);
+  line-height: 2.2;
+  color: var(--text-body);
+  font-weight: 400;
+  white-space: pre-line;
+}
+
+.about-poem .em {
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.about-poem .strong {
+  color: var(--accent-bright);
+  font-weight: 600;
+}
+
+.about-poem .break {
+  display: block;
+  height: 1em;
+}
+
+.about-hashtag {
+  font-size: clamp(11px, 2vw, 13px);
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  margin-top: clamp(24px, 5vw, 40px);
+}
+
+/* ═══════════════════════════════════
+   BUSINESS
+   ═══════════════════════════════════ */
+.biz-card {
+  background: var(--surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-left: 2px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+  padding: clamp(12px, 2.5vw, 16px) clamp(16px, 3vw, 20px);
+  margin-bottom: 8px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+}
+
+.biz-card:hover {
+  transform: translateX(4px);
+  box-shadow: var(--card-shadow);
+}
+
+.biz-card h3 {
+  font-family: 'Playfair Display', 'Noto Sans JP', serif;
+  font-size: clamp(14px, 2.6vw, 16px);
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 4px;
+  letter-spacing: 0.02em;
+}
+
+.biz-card p {
+  font-size: clamp(11px, 2vw, 12.5px);
+  color: var(--text-body);
+  line-height: 1.6;
+}
+
+.biz-card p:empty {
+  display: none;
+}
+
+/* ═══════════════════════════════════
+   GALLERY CAROUSEL
+   ═══════════════════════════════════ */
+.gallery-wrap {
+  overflow: hidden;
+  padding: var(--section-gap) 0;
+  background: var(--bg-alt);
+}
+
+.gallery-wrap .eyebrow {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.carousel-slide {
+  flex-shrink: 0;
+  width: clamp(260px, 65vw, 420px);
+  aspect-ratio: 4/3;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  opacity: 0.4;
+  transform: scale(0.9);
+  transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  box-shadow: 0 12px 40px rgba(212,185,106,0.12);
+  border-color: var(--border-hover);
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 28px 18px 14px;
+  font-size: clamp(12px, 2.2vw, 14px);
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.05em;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
+  pointer-events: none;
+}
+
+/* Placeholder for dummy images */
+.carousel-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(212,185,106,0.06), rgba(212,185,106,0.02));
+  gap: 8px;
+}
+
+.carousel-placeholder svg {
+  width: 40px;
+  height: 40px;
+  stroke: var(--accent);
+  opacity: 0.3;
+  fill: none;
+}
+
+.carousel-placeholder span {
+  font-size: clamp(12px, 2.2vw, 14px);
+  font-weight: 600;
+  color: var(--text-light);
+  letter-spacing: 0.05em;
+}
+
+.carousel-placeholder small {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+/* Dots */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+  padding: 0;
+}
+
+.carousel-dot.active {
+  background: var(--accent);
+  transform: scale(1.3);
+}
+
+/* Nav arrows */
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(212,185,106,0.1);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background 0.3s;
+  backdrop-filter: blur(8px);
+}
+
+.carousel-nav:hover {
+  background: rgba(212,185,106,0.2);
+}
+
+.carousel-prev { left: clamp(8px, 3vw, 24px); }
+.carousel-next { right: clamp(8px, 3vw, 24px); }
+
+.carousel-nav svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+/* ═══════════════════════════════════
+   STORY (Career chapters)
+   ═══════════════════════════════════ */
+.story-chapter {
+  position: relative;
+  margin-bottom: clamp(48px, 10vw, 72px);
+  padding-left: 0;
+}
+
+.story-chapter:last-child { margin-bottom: 0; }
+
+.story-chapter-num {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(11px, 1.8vw, 12px);
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.story-chapter-title {
+  font-family: 'Playfair Display', 'Noto Sans JP', serif;
+  font-size: clamp(22px, 5vw, 30px);
+  font-weight: 700;
+  color: var(--text-light);
+  line-height: 1.3;
+  margin-bottom: clamp(8px, 2vw, 12px);
+}
+
+.story-chapter-sub {
+  font-size: clamp(12px, 2vw, 13px);
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  margin-bottom: clamp(16px, 3vw, 24px);
+}
+
+.story-body {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: clamp(14px, 2.6vw, 15px);
+  line-height: 2.1;
+  color: var(--text-body);
+}
+
+.story-body .em {
+  color: var(--text-light);
+}
+
+.story-body .strong {
+  color: var(--accent-bright);
+  font-weight: 600;
+}
+
+.story-body .break {
+  display: block;
+  height: 0.8em;
+}
+
+.story-quote {
+  font-family: 'Playfair Display', 'Noto Sans JP', serif;
+  font-size: clamp(15px, 3vw, 18px);
+  font-weight: 500;
+  color: var(--text-light);
+  line-height: 2;
+  border-left: 3px solid var(--accent);
+  padding: clamp(14px, 3vw, 20px) clamp(16px, 4vw, 24px);
+  background: rgba(212,185,106,0.03);
+  border-radius: 0 10px 10px 0;
+  margin-top: clamp(16px, 3vw, 24px);
+}
+
+/* Divider between chapters */
+.story-divider {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(to right, var(--accent), transparent);
+  margin: 0 auto clamp(48px, 10vw, 72px);
+  opacity: 0.4;
+}
+
+/* Stagger story chapters */
+.fade-in.visible .story-chapter { animation: slideUp .6s ease both; }
+.fade-in.visible .story-chapter:nth-child(1) { animation-delay: 0s; }
+.fade-in.visible .story-divider:nth-child(2) { animation: slideUp .6s ease both; animation-delay: .1s; }
+.fade-in.visible .story-chapter:nth-child(3) { animation-delay: .2s; }
+.fade-in.visible .story-divider:nth-child(4) { animation: slideUp .6s ease both; animation-delay: .3s; }
+.fade-in.visible .story-chapter:nth-child(5) { animation-delay: .4s; }
+.fade-in.visible .story-divider:nth-child(6) { animation: slideUp .6s ease both; animation-delay: .5s; }
+.fade-in.visible .story-chapter:nth-child(7) { animation-delay: .6s; }
+.fade-in.visible .story-divider:nth-child(8) { animation: slideUp .6s ease both; animation-delay: .7s; }
+.fade-in.visible .story-chapter:nth-child(9) { animation-delay: .8s; }
+
+/* ═══════════════════════════════════
+   VALUES
+   ═══════════════════════════════════ */
+.values-quote {
+  font-family: 'Playfair Display', 'Noto Sans JP', serif;
+  font-size: clamp(15px, 3vw, 19px);
+  font-weight: 600;
+  color: var(--text-light);
+  line-height: 1.9;
+  border-left: 4px solid var(--accent);
+  background: rgba(212,185,106,0.04);
+  border-radius: 0 12px 12px 0;
+  padding: clamp(16px, 3vw, 24px) clamp(16px, 4vw, 28px);
+  margin-bottom: clamp(24px, 5vw, 40px);
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.val-card {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(14px, 3vw, 20px);
+  background: var(--surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: clamp(16px, 3vw, 22px);
+  transition: border-color 0.35s, transform 0.35s;
+}
+
+.val-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-3px);
+}
+
+.val-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--accent-dim);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.val-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.val-card h4 {
+  font-family: 'Playfair Display', 'Noto Sans JP', serif;
+  font-size: clamp(15px, 2.8vw, 17px);
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 4px;
+}
+
+.val-card p {
+  font-size: clamp(12px, 2.2vw, 13px);
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════
+   PHARMA EIGHT
+   ═══════════════════════════════════ */
+.pe-wrap {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(212,185,106,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(80,120,180,0.05) 0%, transparent 60%),
+    var(--bg-alt);
+}
+
+.pe-card {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: clamp(36px, 7vw, 56px) clamp(24px, 5vw, 40px);
+  text-align: center;
+  position: relative;
+}
+
+.pe-cover {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto clamp(24px, 5vw, 36px);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  aspect-ratio: 16 / 9;
+  background: #0d2a3f;
+}
+
+.pe-cover img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.pe-desc {
+  font-size: clamp(13px, 2.5vw, 15px);
+  color: var(--text-body);
+  line-height: 2;
+  max-width: 480px;
+  margin: 0 auto clamp(28px, 5vw, 40px);
+}
+
+.pe-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px clamp(22px, 4vw, 32px);
+  background: #06C755;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: clamp(13px, 2.4vw, 14px);
+  letter-spacing: 0.06em;
+  box-shadow: 0 4px 18px rgba(6, 199, 85, 0.25);
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+.pe-cta:hover {
+  transform: translateY(-2px);
+  background: #05b34c;
+  box-shadow: 0 8px 24px rgba(6, 199, 85, 0.35);
+}
+
+.pe-cta svg {
+  width: 18px;
+  height: 18px;
+  fill: #fff;
+}
+
+/* ═══════════════════════════════════
+   CONTACT
+   ═══════════════════════════════════ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.ct-link {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 3vw, 18px);
+  background: var(--surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: clamp(14px, 3vw, 18px) clamp(16px, 3vw, 22px);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color 0.35s, transform 0.3s, box-shadow 0.35s;
+}
+
+.ct-link:hover {
+  border-color: var(--border-hover);
+  transform: translateX(6px);
+  box-shadow: 0 4px 20px rgba(212,185,106,0.06);
+}
+
+.ct-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--accent-dim);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.ct-link:hover .ct-icon {
+  background: rgba(212,185,106,0.15);
+  box-shadow: 0 0 14px rgba(212,185,106,0.12);
+}
+
+.ct-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--accent);
+  fill: none;
+}
+
+.ct-label {
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.ct-link > div:last-child {
+  min-width: 0;
+  flex: 1;
+}
+
+.ct-value {
+  font-size: clamp(13px, 2.4vw, 15px);
+  font-weight: 500;
+  color: var(--text-light);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════ */
+footer {
+  text-align: center;
+  padding: clamp(32px, 8vw, 56px) 28px clamp(48px, 10vw, 72px);
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+
+footer::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--accent), transparent);
+  margin: 0 auto clamp(16px, 3vw, 24px);
+  opacity: 0.35;
+}
+
+/* ═══════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children */
+.fade-in.visible .biz-card { animation: slideUp .5s ease both; }
+.fade-in.visible .biz-card:nth-child(1) { animation-delay: 0s; }
+.fade-in.visible .biz-card:nth-child(2) { animation-delay: .08s; }
+.fade-in.visible .biz-card:nth-child(3) { animation-delay: .16s; }
+.fade-in.visible .biz-card:nth-child(4) { animation-delay: .24s; }
+.fade-in.visible .biz-card:nth-child(5) { animation-delay: .32s; }
+
+.fade-in.visible .tl-item { animation: slideUp .5s ease both; }
+.fade-in.visible .tl-item:nth-child(1) { animation-delay: 0s; }
+.fade-in.visible .tl-item:nth-child(2) { animation-delay: .08s; }
+.fade-in.visible .tl-item:nth-child(3) { animation-delay: .16s; }
+.fade-in.visible .tl-item:nth-child(4) { animation-delay: .24s; }
+.fade-in.visible .tl-item:nth-child(5) { animation-delay: .32s; }
+.fade-in.visible .tl-item:nth-child(6) { animation-delay: .40s; }
+
+.fade-in.visible .val-card { animation: slideUp .5s ease both; }
+.fade-in.visible .val-card:nth-child(1) { animation-delay: 0s; }
+.fade-in.visible .val-card:nth-child(2) { animation-delay: .08s; }
+.fade-in.visible .val-card:nth-child(3) { animation-delay: .16s; }
+.fade-in.visible .val-card:nth-child(4) { animation-delay: .24s; }
+.fade-in.visible .val-card:nth-child(5) { animation-delay: .32s; }
+
+.fade-in.visible .ct-link { animation: slideUp .5s ease both; }
+.fade-in.visible .ct-link:nth-child(1) { animation-delay: 0s; }
+.fade-in.visible .ct-link:nth-child(2) { animation-delay: .08s; }
+.fade-in.visible .ct-link:nth-child(3) { animation-delay: .16s; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════
+   DESKTOP
+   ═══════════════════════════════════ */
+@media (min-width: 640px) {
+  .values-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 768px) {
+  .section { padding: var(--section-gap) 40px; }
+  .values-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="avatar-wrap">
+    <div class="avatar-glow"></div>
+    <div class="avatar-ring-outer"></div>
+    <div class="avatar-ring"></div>
+    <div class="avatar"><img src="avatar.jpg" alt="Yugo Koike"></div>
+  </div>
+  <h1 class="hero-name">小池 雄悟</h1>
+  <p class="hero-name-en">Yugo Koike</p>
+  <p class="hero-badge">複業家</p>
+  <p class="hero-tagline">
+    情緒経済を生きる。
+  </p>
+  <div class="hero-affiliations">
+    <div class="hero-aff-item">
+      <span class="hero-aff-role">CEO</span>
+      <span class="hero-aff-name">株式会社YUMEMATCH</span>
+    </div>
+    <div class="hero-aff-item">
+      <span class="hero-aff-role">代表</span>
+      <span class="hero-aff-name">はなひらくグループ</span>
+    </div>
+    <div class="hero-aff-item">
+      <span class="hero-aff-role">代表</span>
+      <span class="hero-aff-name">未来設計Lab. 炉-irori-</span>
+    </div>
+    <div class="hero-aff-item">
+      <span class="hero-aff-role">COO</span>
+      <span class="hero-aff-name">有限会社松本調剤薬局</span>
+    </div>
+    <div class="hero-aff-item">
+      <span class="hero-aff-role">執行役員</span>
+      <span class="hero-aff-name">株式会社FMI</span>
+    </div>
+  </div>
+  <div class="scroll-cue">scroll</div>
+</div>
+
+<!-- ═══ BUSINESS ═══ -->
+<div class="section fade-in">
+  <div class="eyebrow">Business</div>
+
+  <div class="biz-card">
+    <h3>株式会社YUMEMATCH</h3>
+    <p>ビジネスコーチング / キャリアコーチング / Pharma Eight∞（薬剤師向け複業スクール）</p>
+  </div>
+
+  <div class="biz-card">
+    <h3>はなひらくグループ</h3>
+    <p>就労支援B型事業所 / グループホーム / 製菓ブランド「叶花-kanoka-」/ お弁当事業「花咲く弁当」/ 水耕栽培プラント</p>
+  </div>
+
+  <div class="biz-card">
+    <h3>未来設計Lab. 炉-irori-</h3>
+    <p>住宅相談（引越し・住宅購入・ローン）/ 相続関連相談 / 保険相談 / 資産形成相談 / 通信関連 / ウォーターサーバー</p>
+  </div>
+
+  <div class="biz-card">
+    <h3>有限会社松本調剤薬局</h3>
+  </div>
+
+  <div class="biz-card">
+    <h3>株式会社FMI</h3>
+  </div>
+</div>
+
+<!-- ═══ GALLERY ═══ -->
+<div class="gallery-wrap fade-in">
+  <div class="eyebrow">Gallery — はなひらくグループ</div>
+  <div class="carousel">
+    <button class="carousel-nav carousel-prev" aria-label="前へ">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="carousel-track" id="carouselTrack">
+      <div class="carousel-slide">
+        <img src="gallery/kanoka.png" alt="叶花 -kanoka-">
+        <div class="carousel-caption">叶花 -kanoka-</div>
+      </div>
+      <div class="carousel-slide">
+        <img src="gallery/hanasaku_bento.png" alt="花咲く弁当">
+        <div class="carousel-caption">花咲く弁当</div>
+      </div>
+      <div class="carousel-slide">
+        <img src="gallery/hydroponics.jpg" alt="水耕栽培プラント">
+        <div class="carousel-caption">水耕栽培プラント</div>
+      </div>
+    </div>
+    <button class="carousel-nav carousel-next" aria-label="次へ">
+      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+  <div class="carousel-dots" id="carouselDots"></div>
+</div>
+
+<!-- ═══ PHARMA EIGHT∞ ═══ -->
+<div class="pe-wrap fade-in">
+  <div class="pe-card">
+    <div class="pe-cover">
+      <img src="pharma_eight_cover.png" alt="Pharma Eight∞ — 薬剤師の職域展開サービス">
+    </div>
+    <p class="pe-desc">
+      「処方される側の人生から、自分で処方する人生へ。」<br>
+      薬剤師としての専門性を活かし、自分の人生をデザインする仲間が集まるコミュニティ。
+    </p>
+    <a href="https://lin.ee/n2P3rG5" class="pe-cta" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      LINE公式で詳細を見る
+    </a>
+  </div>
+</div>
+
+<!-- ═══ CAREER / STORY ═══ -->
+<div class="band-warm">
+  <div class="section fade-in">
+    <div class="eyebrow">Story</div>
+
+    <div class="story-chapter">
+      <div class="story-chapter-num">Chapter 01</div>
+      <h2 class="story-chapter-title">原点</h2>
+      <div class="story-chapter-sub">1992 — 長野県岡谷市に生まれる</div>
+      <div class="story-body">
+        朝から晩まで白球を追いかけた野球少年時代。高校ではイチから野球部を立ち上げた。13年間の野球人生で刻まれたのは、<span class="em">仲間と一つの目標に向かって走る喜び</span>だった。
+        <span class="break"></span>
+        家族の苦しみに直面し、精神科医を志すも、2年の浪人を経て断念。立命館大学薬学部へ進学する。悔しさの中で出会った一つの言葉が、人生を変えた。
+        <div class="story-quote">
+          「くすり」とは、「苦をすりへらすもの」。
+        </div>
+        <span class="break"></span>
+        苦をすりへらすことで、誰もが生きたい人生を生きていける社会をつくる——そんな「くすり」を届けられる人間になりたい。生涯をかけたテーマが、ここで決まった。
+      </div>
+    </div>
+
+    <div class="story-divider"></div>
+
+    <div class="story-chapter">
+      <div class="story-chapter-num">Chapter 02</div>
+      <h2 class="story-chapter-title">はじまり</h2>
+      <div class="story-chapter-sub">2018 — 個人事業主としてスタート</div>
+      <div class="story-body">
+        大学在学中、日本薬学生連盟の代表を務めるなかで、たくさんの出会いに恵まれた。そして一つの問いにたどり着く。
+        <span class="break"></span>
+        <span class="strong">「どう死にたいか」——そこから逆算した。</span>
+        <span class="break"></span>
+        <span class="em">溢れるくらいの多くの人に囲まれて天国へ行きたい。なんなら野外フェスくらいの葬式でもいい。死してなお、幸せに貢献する。</span>
+        <span class="break"></span>
+        自分だけがやりたいことをやるだけじゃ足りない。周りもハッピーで、やりたいことができている——そんな人に囲まれている人生を送りたい。ファイナンシャルプランナーとして、人の人生設計に伴走するキャリアが始まった。
+      </div>
+    </div>
+
+    <div class="story-divider"></div>
+
+    <div class="story-chapter">
+      <div class="story-chapter-num">Chapter 03</div>
+      <h2 class="story-chapter-title">二足のわらじ</h2>
+      <div class="story-chapter-sub">2019 — 薬剤師 × FP</div>
+      <div class="story-body">
+        薬剤師として現場に立ちながら、FP事務所「炉-irori-」を長野に設立。人の人生設計に伴走する日々。
+        <span class="break"></span>
+        調剤室の中で見たのは、能力も意欲もあるのに業界の構造に可能性を閉じ込められた薬剤師たちの姿だった。
+        <div class="story-quote">
+          「処方される側の人生から、自分で処方する人生へ。」<br>
+          ——この問題意識が、のちのすべての事業の根っこになる。
+        </div>
+      </div>
+    </div>
+
+    <div class="story-divider"></div>
+
+    <div class="story-chapter">
+      <div class="story-chapter-num">Chapter 04</div>
+      <h2 class="story-chapter-title">独立、そして拡張</h2>
+      <div class="story-chapter-sub">2021 — 東京・神奈川へ</div>
+      <div class="story-body">
+        <span class="em">会った人に対して、一歩今よりも幸せに生きれるようなサポートをする。</span>それを愚直に続けていった先に、事業は自然と枝分かれしていった。
+        <span class="break"></span>
+        家族の経験から生まれた障がい福祉事業「はなひらく」、住宅・保険の「炉-irori-」、コーチング事業、薬剤師向け複業スクール「Pharma Eight∞」——業界は問わない。<span class="strong">「人の人生に伴走する」</span>という一本の軸だけがある。
+      </div>
+    </div>
+
+    <div class="story-divider"></div>
+
+    <div class="story-chapter">
+      <div class="story-chapter-num">Chapter 05</div>
+      <h2 class="story-chapter-title">夢の住所が集まる町</h2>
+      <div class="story-chapter-sub">2023 — Now</div>
+      <div class="story-body">
+        出会った人一人ひとりに対してできることをし続けていれば、既存の概念にとらわれない<span class="strong">「町」</span>が自分のまわりにできる。それが大きければ大きいほど、楽しいじゃないか。
+        <span class="break"></span>
+        <span class="em">「情緒経済」——効率や利益ではなく、人の心や感情そのものを価値の源泉とする経済。</span>不便益化、人情化、地産地笑、郷愁化、自己実現。
+        <span class="break"></span>
+        人生という旅の観光窓口になりたい。ゆりかごから墓場まで、幸せな人生をサポートできる終身経済圏をつくる。
+        <span class="break"></span>
+        一度きりの人生、後悔したくない。だからこそ、面白いと思うことはすべてやる。<span class="strong">「最高の人生だった」と言って死にたい。</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ VALUES ═══ -->
+<div class="section fade-in">
+  <div class="eyebrow">Values</div>
+
+  <div class="values-quote">
+    「情緒経済」——効率や利益を追求するのではなく、<br>
+    人の心や感情そのものを価値とする。
+  </div>
+
+  <div class="values-grid">
+    <div class="val-card">
+      <div class="val-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div>
+        <h4>不便益化</h4>
+        <p>あえて手間をかけることで得られる心の豊かさや、本質的な価値を追求する</p>
+      </div>
+    </div>
+    <div class="val-card">
+      <div class="val-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <div>
+        <h4>人情化</h4>
+        <p>デジタルにはない、心と心が通じ合う温かい人間関係を重視する</p>
+      </div>
+    </div>
+    <div class="val-card">
+      <div class="val-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <div>
+        <h4>地産地笑</h4>
+        <p>地域で作り、地域でこそ。共に喜びを分かち合う文化を創り出す</p>
+      </div>
+    </div>
+    <div class="val-card">
+      <div class="val-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div>
+        <h4>郷愁化</h4>
+        <p>便利さが失わせた温かさや、昔ながらのコミュニティのつながりを再構築する</p>
+      </div>
+    </div>
+    <div class="val-card">
+      <div class="val-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <div>
+        <h4>自己実現</h4>
+        <p>関わるすべての人々が、それぞれの夢を叶えるプラットフォームとなる</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CONTACT ═══ -->
+<div class="band">
+  <div class="section fade-in">
+    <div class="eyebrow">Contact</div>
+
+    <div class="contact-grid">
+      <a href="mailto:y-koike@yumematch.com" class="ct-link">
+        <div class="ct-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-width="1.5"/><polyline points="22,6 12,13 2,6" stroke-width="1.5"/></svg>
+        </div>
+        <div>
+          <div class="ct-label">Email</div>
+          <div class="ct-value">y-koike@yumematch.com</div>
+        </div>
+      </a>
+
+      <a href="tel:090-9666-4632" class="ct-link">
+        <div class="ct-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke-width="1.5"/></svg>
+        </div>
+        <div>
+          <div class="ct-label">Phone</div>
+          <div class="ct-value">090-9666-4632</div>
+        </div>
+      </a>
+
+      <a href="https://line.me/ti/p/eMTAC1XOlT" class="ct-link">
+        <div class="ct-icon">
+          <svg viewBox="0 0 24 24" stroke-width="0" fill="var(--accent)"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        </div>
+        <div>
+          <div class="ct-label">LINE</div>
+          <div class="ct-value">友だち追加</div>
+        </div>
+      </a>
+
+      <a href="https://www.google.com/maps/search/?api=1&query=%E9%95%B7%E9%87%8E%E7%9C%8C%E6%9D%BE%E6%9C%AC%E5%B8%82%E5%AF%BF%E5%8C%97%EF%BC%97%E4%B8%81%E7%9B%AE%EF%BC%91%EF%BC%90%E2%88%92%EF%BC%91%EF%BC%91" class="ct-link" target="_blank" rel="noopener">
+        <div class="ct-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="ct-label">Address</div>
+          <div class="ct-value">〒399-0011 長野県松本市寿北7-10-11</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>&copy; 2026 Yugo Koike. All rights reserved.</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+// ─── Carousel ───
+(function() {
+  const track = document.getElementById('carouselTrack');
+  const slides = track.querySelectorAll('.carousel-slide');
+  const dotsWrap = document.getElementById('carouselDots');
+  const prevBtn = document.querySelector('.carousel-prev');
+  const nextBtn = document.querySelector('.carousel-next');
+  let current = 0;
+  let timer;
+
+  // Create dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(dot);
+  });
+
+  function goTo(idx) {
+    current = ((idx % slides.length) + slides.length) % slides.length;
+    updatePosition();
+    resetTimer();
+  }
+
+  function updatePosition() {
+    const slideW = slides[0].offsetWidth;
+    const gap = 16;
+    const wrapW = track.parentElement.offsetWidth;
+    const center = (wrapW - slideW) / 2;
+    const offset = -(current * (slideW + gap)) + center;
+    track.style.transform = `translateX(${offset}px)`;
+
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) =>
+      d.classList.toggle('active', i === current)
+    );
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(current + 1), 4000);
+  }
+
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+
+  // Touch swipe
+  let startX = 0;
+  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
+  });
+
+  // Init
+  updatePosition();
+  resetTimer();
+  window.addEventListener('resize', () => updatePosition());
+})();
+</script>
+
+</body>
+</html>
