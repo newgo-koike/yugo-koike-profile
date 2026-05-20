@@ -1056,7 +1056,6 @@ footer::before {
 <nav class="site-nav" id="siteNav">
   <a class="nav-logo" href="#hero">小池 雄悟</a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
     <li><a href="#business">Business</a></li>
     <li><a href="#story">Story</a></li>
     <li><a href="#values">Values</a></li>
@@ -1103,20 +1102,6 @@ footer::before {
   <div class="scroll-cue">scroll</div>
 </div>
 
-<!-- ═══ ABOUT ═══ -->
-<div class="band-warm" id="about">
-  <div class="section fade-in">
-    <div class="eyebrow">About</div>
-    <div class="about-poem">会った人が、<span class="em">一歩だけ幸せになれるように。</span>
-それだけを、愚直にやり続けてきた。
-<span class="break"></span>薬剤師として、FPとして、経営者として——
-肩書きはいくつもあるが、軸はひとつだ。
-<span class="break"></span><span class="strong">「苦をすりへらして、生きたい人生を生きる社会をつくる。」</span>
-<span class="break"></span>効率でも利益でもなく、<span class="em">人の心そのもの</span>を価値とする経済を、
-自分の生き方ごと証明し続けている。</div>
-    <div class="about-hashtag">#情緒経済 #複業家 #薬剤師 #FP #コーチ #長野 #東京</div>
-  </div>
-</div>
 
 <!-- ═══ BUSINESS ═══ -->
 <div class="section fade-in" id="business">
@@ -1463,41 +1448,79 @@ backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// ─── Carousel ───
+// ─── Carousel (infinite loop) ───
 (function() {
   const track = document.getElementById('carouselTrack');
-  const slides = track.querySelectorAll('.carousel-slide');
   const dotsWrap = document.getElementById('carouselDots');
   const prevBtn = document.querySelector('.carousel-prev');
   const nextBtn = document.querySelector('.carousel-next');
-  let current = 0;
-  let timer;
 
-  slides.forEach((_, i) => {
+  const origSlides = [...track.querySelectorAll('.carousel-slide')];
+  const N = origSlides.length;
+
+  // 前後にクローンを追加して無限ループを実現
+  origSlides.forEach(s => track.appendChild(s.cloneNode(true)));
+  origSlides.forEach(s => track.insertBefore(s.cloneNode(true), track.firstChild));
+  // レイアウト: [N clones] [N real] [N clones]  合計3N
+
+  const allSlides = [...track.querySelectorAll('.carousel-slide')];
+  let current = N; // 最初のリアルスライド
+  let timer;
+  let jumping = false;
+
+  // ドット（リアルスライド分のみ）
+  for (let i = 0; i < N; i++) {
     const dot = document.createElement('button');
     dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-    dot.addEventListener('click', () => goTo(i));
+    dot.addEventListener('click', () => goTo(i + N));
     dotsWrap.appendChild(dot);
-  });
-
-  function goTo(idx) {
-    current = ((idx % slides.length) + slides.length) % slides.length;
-    updatePosition();
-    resetTimer();
   }
 
-  function updatePosition() {
-    const slideW = slides[0].offsetWidth;
+  function realIdx() {
+    return ((current - N) % N + N) % N;
+  }
+
+  function setPosition(animate) {
+    const slideW = allSlides[0].offsetWidth;
     const gap = 16;
     const wrapW = track.parentElement.offsetWidth;
     const center = (wrapW - slideW) / 2;
     const offset = -(current * (slideW + gap)) + center;
-    track.style.transform = `translateX(${offset}px)`;
 
-    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    if (!animate) {
+      track.style.transition = 'none';
+      track.style.transform = `translateX(${offset}px)`;
+      track.offsetHeight; // reflow
+      track.style.transition = '';
+    } else {
+      track.style.transform = `translateX(${offset}px)`;
+    }
+
+    allSlides.forEach((s, i) => s.classList.toggle('active', i === current));
+    const ri = realIdx();
     dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) =>
-      d.classList.toggle('active', i === current)
+      d.classList.toggle('active', i === ri)
     );
+  }
+
+  function goTo(idx) {
+    if (jumping) return;
+    current = idx;
+    setPosition(true);
+    resetTimer();
+
+    // アニメーション完了後、クローン領域にいたらリアル領域にジャンプ
+    jumping = true;
+    setTimeout(() => {
+      if (current < N) {
+        current += N;
+        setPosition(false);
+      } else if (current >= 2 * N) {
+        current -= N;
+        setPosition(false);
+      }
+      jumping = false;
+    }, 530);
   }
 
   function resetTimer() {
@@ -1515,18 +1538,14 @@ backToTop.addEventListener('click', () => {
     if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
   });
 
-  window.addEventListener('resize', () => updatePosition());
+  window.addEventListener('resize', () => setPosition(false));
 
-  // 画像ロード後に正確な幅で初期位置を計算する
-  if (document.readyState === 'complete') {
-    updatePosition();
+  function init() {
+    setPosition(false);
     resetTimer();
-  } else {
-    window.addEventListener('load', () => {
-      updatePosition();
-      resetTimer();
-    });
   }
+
+  document.readyState === 'complete' ? init() : window.addEventListener('load', init);
 })();
 </script>
 
