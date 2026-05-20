@@ -55,6 +55,81 @@ body::after {
 }
 
 /* ═══════════════════════════════════
+   FLOATING NAV
+   ═══════════════════════════════════ */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 clamp(20px, 5vw, 48px);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(6, 14, 28, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transform: translateY(-100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s;
+  opacity: 0;
+}
+
+.site-nav.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 3.5vw, 36px);
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: clamp(10px, 1.8vw, 11px);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.25s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ═══════════════════════════════════
    HERO
    ═══════════════════════════════════ */
 .hero {
@@ -360,6 +435,16 @@ body::after {
   display: none;
 }
 
+.biz-card-role {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
 /* ═══════════════════════════════════
    GALLERY CAROUSEL
    ═══════════════════════════════════ */
@@ -430,38 +515,6 @@ body::after {
   letter-spacing: 0.05em;
   background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
   pointer-events: none;
-}
-
-/* Placeholder for dummy images */
-.carousel-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, rgba(212,185,106,0.06), rgba(212,185,106,0.02));
-  gap: 8px;
-}
-
-.carousel-placeholder svg {
-  width: 40px;
-  height: 40px;
-  stroke: var(--accent);
-  opacity: 0.3;
-  fill: none;
-}
-
-.carousel-placeholder span {
-  font-size: clamp(12px, 2.2vw, 14px);
-  font-weight: 600;
-  color: var(--text-light);
-  letter-spacing: 0.05em;
-}
-
-.carousel-placeholder small {
-  font-size: 11px;
-  color: var(--text-dim);
 }
 
 /* Dots */
@@ -861,6 +914,59 @@ footer::before {
   opacity: 0.35;
 }
 
+.footer-tagline {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  color: var(--text-dim);
+  letter-spacing: 0.18em;
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+/* ═══════════════════════════════════
+   BACK TO TOP
+   ═══════════════════════════════════ */
+.back-to-top {
+  position: fixed;
+  bottom: clamp(20px, 4vw, 32px);
+  right: clamp(20px, 4vw, 32px);
+  z-index: 500;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(212,185,106,0.12);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.35s, transform 0.35s, background 0.3s;
+  pointer-events: none;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  background: rgba(212,185,106,0.22);
+}
+
+.back-to-top svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
 /* ═══════════════════════════════════
    ANIMATIONS
    ═══════════════════════════════════ */
@@ -930,8 +1036,20 @@ footer::before {
 </head>
 <body>
 
+<!-- ═══ FLOATING NAV ═══ -->
+<nav class="site-nav" id="siteNav">
+  <a class="nav-logo" href="#hero">小池 雄悟</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#business">Business</a></li>
+    <li><a href="#story">Story</a></li>
+    <li><a href="#values">Values</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
 <!-- ═══ HERO ═══ -->
-<div class="hero">
+<div class="hero" id="hero">
   <div class="avatar-wrap">
     <div class="avatar-glow"></div>
     <div class="avatar-ring-outer"></div>
@@ -969,36 +1087,58 @@ footer::before {
   <div class="scroll-cue">scroll</div>
 </div>
 
+<!-- ═══ ABOUT ═══ -->
+<div class="band-warm" id="about">
+  <div class="section fade-in">
+    <div class="eyebrow">About</div>
+    <div class="about-poem">会った人が、<span class="em">一歩だけ幸せになれるように。</span>
+それだけを、愚直にやり続けてきた。
+<span class="break"></span>薬剤師として、FPとして、経営者として——
+肩書きはいくつもあるが、軸はひとつだ。
+<span class="break"></span><span class="strong">「苦をすりへらして、生きたい人生を生きる社会をつくる。」</span>
+<span class="break"></span>効率でも利益でもなく、<span class="em">人の心そのもの</span>を価値とする経済を、
+自分の生き方ごと証明し続けている。</div>
+    <div class="about-hashtag">#情緒経済 #複業家 #薬剤師 #FP #コーチ #長野 #東京</div>
+  </div>
+</div>
+
 <!-- ═══ BUSINESS ═══ -->
-<div class="section fade-in">
+<div class="section fade-in" id="business">
   <div class="eyebrow">Business</div>
 
   <div class="biz-card">
+    <span class="biz-card-role">CEO</span>
     <h3>株式会社YUMEMATCH</h3>
     <p>ビジネスコーチング / キャリアコーチング / Pharma Eight∞（薬剤師向け複業スクール）</p>
   </div>
 
   <div class="biz-card">
+    <span class="biz-card-role">代表</span>
     <h3>はなひらくグループ</h3>
     <p>就労支援B型事業所 / グループホーム / 製菓ブランド「叶花-kanoka-」/ お弁当事業「花咲く弁当」/ 水耕栽培プラント</p>
   </div>
 
   <div class="biz-card">
+    <span class="biz-card-role">代表</span>
     <h3>未来設計Lab. 炉-irori-</h3>
     <p>住宅相談（引越し・住宅購入・ローン）/ 相続関連相談 / 保険相談 / 資産形成相談 / 通信関連 / ウォーターサーバー</p>
   </div>
 
   <div class="biz-card">
+    <span class="biz-card-role">COO</span>
     <h3>有限会社松本調剤薬局</h3>
+    <p>地域密着型調剤薬局。COOとして経営基盤の強化と地域医療への貢献に携わる。</p>
   </div>
 
   <div class="biz-card">
+    <span class="biz-card-role">執行役員</span>
     <h3>株式会社FMI</h3>
+    <p>執行役員として財務・マーケティング戦略に参画。</p>
   </div>
 </div>
 
 <!-- ═══ GALLERY ═══ -->
-<div class="gallery-wrap fade-in">
+<div class="gallery-wrap fade-in" id="gallery">
   <div class="eyebrow">Gallery — はなひらくグループ</div>
   <div class="carousel">
     <button class="carousel-nav carousel-prev" aria-label="前へ">
@@ -1043,7 +1183,7 @@ footer::before {
 </div>
 
 <!-- ═══ CAREER / STORY ═══ -->
-<div class="band-warm">
+<div class="band-warm" id="story">
   <div class="section fade-in">
     <div class="eyebrow">Story</div>
 
@@ -1131,7 +1271,7 @@ footer::before {
 </div>
 
 <!-- ═══ VALUES ═══ -->
-<div class="section fade-in">
+<div class="section fade-in" id="values">
   <div class="eyebrow">Values</div>
 
   <div class="values-quote">
@@ -1189,7 +1329,7 @@ footer::before {
 </div>
 
 <!-- ═══ CONTACT ═══ -->
-<div class="band">
+<div class="band" id="contact">
   <div class="section fade-in">
     <div class="eyebrow">Contact</div>
 
@@ -1238,9 +1378,18 @@ footer::before {
 </div>
 
 <!-- ═══ FOOTER ═══ -->
-<footer>&copy; 2026 Yugo Koike. All rights reserved.</footer>
+<footer>
+  <div class="footer-tagline">情緒経済を生きる。</div>
+  &copy; 2026 Yugo Koike. All rights reserved.
+</footer>
+
+<!-- ═══ BACK TO TOP ═══ -->
+<button class="back-to-top" id="backToTop" aria-label="トップへ戻る">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
 
 <script>
+// ─── Intersection Observer (fade-in) ───
 const obs = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
     if (e.isIntersecting) {
@@ -1250,6 +1399,24 @@ const obs = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 
 document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+// ─── Nav & Back-to-top show/hide ───
+const nav = document.getElementById('siteNav');
+const backToTop = document.getElementById('backToTop');
+const hero = document.getElementById('hero');
+
+const scrollHandler = () => {
+  const heroH = hero.offsetHeight * 0.6;
+  const scrolled = window.scrollY > heroH;
+  nav.classList.toggle('visible', scrolled);
+  backToTop.classList.toggle('visible', window.scrollY > 400);
+};
+
+window.addEventListener('scroll', scrollHandler, { passive: true });
+
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 
 // ─── Carousel ───
 (function() {
@@ -1261,7 +1428,6 @@ document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
   let current = 0;
   let timer;
 
-  // Create dots
   slides.forEach((_, i) => {
     const dot = document.createElement('button');
     dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
@@ -1297,7 +1463,6 @@ document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
   prevBtn.addEventListener('click', () => goTo(current - 1));
   nextBtn.addEventListener('click', () => goTo(current + 1));
 
-  // Touch swipe
   let startX = 0;
   track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
   track.addEventListener('touchend', e => {
@@ -1305,7 +1470,6 @@ document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
     if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
   });
 
-  // Init
   updatePosition();
   resetTimer();
   window.addEventListener('resize', () => updatePosition());
