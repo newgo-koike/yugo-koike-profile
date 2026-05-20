@@ -435,6 +435,22 @@ body::after {
   display: none;
 }
 
+.biz-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+
+.biz-link:hover {
+  opacity: 1;
+}
+
 .biz-card-role {
   font-size: 9px;
   letter-spacing: 0.22em;
@@ -1116,6 +1132,7 @@ footer::before {
     <span class="biz-card-role">代表</span>
     <h3>はなひらくグループ</h3>
     <p>就労支援B型事業所 / グループホーム / 製菓ブランド「叶花-kanoka-」/ お弁当事業「花咲く弁当」/ 水耕栽培プラント</p>
+    <a href="https://fmi-hanahiraku.com/" class="biz-link" target="_blank" rel="noopener">公式サイト →</a>
   </div>
 
   <div class="biz-card">
@@ -1150,12 +1167,40 @@ footer::before {
         <div class="carousel-caption">叶花 -kanoka-</div>
       </div>
       <div class="carousel-slide">
+        <img src="gallery/kanoka2.jpg" alt="叶花 -kanoka- 素材">
+        <div class="carousel-caption">叶花 -kanoka-</div>
+      </div>
+      <div class="carousel-slide">
         <img src="gallery/hanasaku_bento.png" alt="花咲く弁当">
         <div class="carousel-caption">花咲く弁当</div>
       </div>
       <div class="carousel-slide">
         <img src="gallery/hydroponics.jpg" alt="水耕栽培プラント">
         <div class="carousel-caption">水耕栽培プラント</div>
+      </div>
+      <div class="carousel-slide">
+        <img src="gallery/img01.jpeg" alt="はなひらく">
+        <div class="carousel-caption">はなひらく</div>
+      </div>
+      <div class="carousel-slide">
+        <img src="gallery/img02.jpeg" alt="はなひらく">
+        <div class="carousel-caption">はなひらく</div>
+      </div>
+      <div class="carousel-slide">
+        <img src="gallery/img03.jpeg" alt="はなひらく">
+        <div class="carousel-caption">はなひらく</div>
+      </div>
+      <div class="carousel-slide">
+        <img src="gallery/photo01.jpg" alt="はなひらくグループ">
+        <div class="carousel-caption">はなひらくグループ</div>
+      </div>
+      <div class="carousel-slide">
+        <img src="gallery/photo02.jpg" alt="はなひらくグループ">
+        <div class="carousel-caption">はなひらくグループ</div>
+      </div>
+      <div class="carousel-slide">
+        <img src="gallery/photo03.jpg" alt="はなひらくグループ">
+        <div class="carousel-caption">はなひらくグループ</div>
       </div>
     </div>
     <button class="carousel-nav carousel-next" aria-label="次へ">
@@ -1470,9 +1515,18 @@ backToTop.addEventListener('click', () => {
     if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
   });
 
-  updatePosition();
-  resetTimer();
   window.addEventListener('resize', () => updatePosition());
+
+  // 画像ロード後に正確な幅で初期位置を計算する
+  if (document.readyState === 'complete') {
+    updatePosition();
+    resetTimer();
+  } else {
+    window.addEventListener('load', () => {
+      updatePosition();
+      resetTimer();
+    });
+  }
 })();
 </script>
 
