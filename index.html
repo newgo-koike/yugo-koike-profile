@@ -470,10 +470,33 @@ body::after {
   background: var(--bg-alt);
 }
 
-.gallery-wrap .eyebrow {
+.gallery-header {
   max-width: 700px;
   margin: 0 auto;
   padding: 0 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.gallery-header .eyebrow {
+  margin-bottom: 0;
+}
+
+.gallery-hp-link {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.gallery-hp-link:hover {
+  opacity: 1;
 }
 
 .carousel {
@@ -1117,7 +1140,6 @@ footer::before {
     <span class="biz-card-role">代表</span>
     <h3>はなひらくグループ</h3>
     <p>就労支援B型事業所 / グループホーム / 製菓ブランド「叶花-kanoka-」/ お弁当事業「花咲く弁当」/ 水耕栽培プラント</p>
-    <a href="https://fmi-hanahiraku.com/" class="biz-link" target="_blank" rel="noopener">公式サイト →</a>
   </div>
 
   <div class="biz-card">
@@ -1141,7 +1163,10 @@ footer::before {
 
 <!-- ═══ GALLERY ═══ -->
 <div class="gallery-wrap fade-in" id="gallery">
-  <div class="eyebrow">Gallery — はなひらくグループ</div>
+  <div class="gallery-header">
+    <div class="eyebrow">Gallery — はなひらくグループ</div>
+    <a href="https://fmi-hanahiraku.com/" class="gallery-hp-link" target="_blank" rel="noopener">公式サイト →</a>
+  </div>
   <div class="carousel">
     <button class="carousel-nav carousel-prev" aria-label="前へ">
       <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
@@ -1165,27 +1190,21 @@ footer::before {
       </div>
       <div class="carousel-slide">
         <img src="gallery/img01.jpeg" alt="はなひらく">
-        <div class="carousel-caption">はなひらく</div>
       </div>
       <div class="carousel-slide">
         <img src="gallery/img02.jpeg" alt="はなひらく">
-        <div class="carousel-caption">はなひらく</div>
       </div>
       <div class="carousel-slide">
         <img src="gallery/img03.jpeg" alt="はなひらく">
-        <div class="carousel-caption">はなひらく</div>
       </div>
       <div class="carousel-slide">
         <img src="gallery/photo01.jpg" alt="はなひらくグループ">
-        <div class="carousel-caption">はなひらくグループ</div>
       </div>
       <div class="carousel-slide">
         <img src="gallery/photo02.jpg" alt="はなひらくグループ">
-        <div class="carousel-caption">はなひらくグループ</div>
       </div>
       <div class="carousel-slide">
         <img src="gallery/photo03.jpg" alt="はなひらくグループ">
-        <div class="carousel-caption">はなひらくグループ</div>
       </div>
     </div>
     <button class="carousel-nav carousel-next" aria-label="次へ">
