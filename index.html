@@ -3,1103 +3,624 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yugo Koike - Profile</title>
+<title>小池 雄悟 — デジたる。アナろぐ。</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg: #0b1528;
-  --bg-alt: #060e1c;
-  --bg-warm: #10192e;
-  --surface: rgba(17, 29, 53, 0.65);
-  --text: #d4b96a;
-  --text-light: #ecdfa8;
-  --text-dim: #6b5f3e;
-  --text-body: #9a8b5e;
-  --accent: #d4b96a;
-  --accent-bright: #f0d88a;
-  --accent-dim: rgba(212, 185, 106, 0.08);
-  --border: rgba(212, 185, 106, 0.1);
-  --border-hover: rgba(212, 185, 106, 0.28);
-  --card-shadow: 0 2px 24px rgba(0,0,0,0.25);
-  --section-gap: clamp(56px, 12vw, 88px);
+  --navy:   #1b3a6b;
+  --cream:  #f8f2e6;
+  --mustard:#e8b84b;
+  --navy-light: #2a4f8a;
+  --cream-dark: #ede4d0;
+  --text-navy:  #0d2143;
+  --text-cream: #f8f2e6;
+  --text-body-on-navy:  rgba(248,242,230,0.75);
+  --text-body-on-cream: #4a3f2e;
+  --border-navy:  rgba(232,184,75,0.18);
+  --border-cream: rgba(27,58,107,0.12);
+  --section-gap: clamp(72px, 14vw, 120px);
+  --content-w: 720px;
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
-  background: var(--bg);
-  color: var(--text-body);
-  line-height: 1.75;
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--text-body-on-cream);
+  line-height: 1.8;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-/* ─── Noise ─── */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 256px;
-}
-
-/* ═══════════════════════════════════
-   FLOATING NAV
-   ═══════════════════════════════════ */
+/* ═══ NAV ═══ */
 .site-nav {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 1000;
-  padding: 0 clamp(20px, 5vw, 48px);
   height: 56px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(6, 14, 28, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
+  padding: 0 clamp(20px, 5vw, 48px);
+  background: var(--navy);
+  border-bottom: 1px solid var(--border-navy);
   transform: translateY(-100%);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s;
-  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
 }
-
-.site-nav.visible {
-  transform: translateY(0);
-  opacity: 1;
-}
+.site-nav.visible { transform: translateY(0); }
 
 .nav-logo {
   font-family: 'Playfair Display', serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--accent);
-  letter-spacing: 0.12em;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--mustard);
+  letter-spacing: 0.1em;
   text-decoration: none;
-  white-space: nowrap;
 }
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: clamp(18px, 3.5vw, 36px);
-  list-style: none;
-}
-
+.nav-links { display: flex; gap: clamp(20px, 4vw, 40px); list-style: none; }
 .nav-links a {
-  font-size: clamp(10px, 1.8vw, 11px);
-  letter-spacing: 0.22em;
+  font-size: 10px;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--text-body-on-navy);
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.25s;
-  position: relative;
+  transition: color 0.2s;
 }
+.nav-links a:hover { color: var(--mustard); }
 
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--accent);
-  transition: width 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: var(--accent);
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-/* ═══════════════════════════════════
-   HERO
-   ═══════════════════════════════════ */
+/* ═══ HERO ═══ */
 .hero {
   min-height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: clamp(40px, 10vw, 80px) 28px;
+  background: var(--cream);
   position: relative;
   overflow: hidden;
-  background: var(--bg-alt);
+  text-align: center;
+  padding: clamp(80px, 15vw, 140px) 28px clamp(60px, 10vw, 100px);
 }
 
+/* 右斜め背景 */
 .hero::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 35% 30%, rgba(212,185,106,0.07) 0%, transparent 55%),
-    radial-gradient(ellipse at 65% 70%, rgba(80,120,180,0.04) 0%, transparent 55%);
-  animation: heroShift 16s ease-in-out infinite alternate;
-  pointer-events: none;
+  top: 0; right: 0;
+  width: 40%;
+  height: 100%;
+  background: var(--navy);
+  clip-path: polygon(28% 0, 100% 0, 100% 100%, 0 100%);
+  z-index: 0;
 }
 
-@keyframes heroShift {
-  0%   { transform: translate(0, 0) scale(1); }
-  50%  { transform: translate(2%, -2%) scale(1.03); }
-  100% { transform: translate(-1%, 1%) scale(0.98); }
-}
+.hero > * { position: relative; z-index: 2; }
 
-/* Avatar */
-.avatar-wrap {
-  position: relative;
-  margin-bottom: clamp(24px, 5vw, 40px);
-}
-
+.avatar-wrap { margin-bottom: clamp(24px, 5vw, 40px); }
 .avatar {
-  width: clamp(110px, 22vw, 150px);
-  height: clamp(110px, 22vw, 150px);
+  width: clamp(96px, 18vw, 130px);
+  height: clamp(96px, 18vw, 130px);
   border-radius: 50%;
   overflow: hidden;
-  position: relative;
-  z-index: 2;
-  box-shadow: 0 0 0 3px var(--bg-alt), 0 0 0 5px rgba(212,185,106,0.25);
+  border: 4px solid var(--cream);
+  box-shadow: 0 8px 32px rgba(27,58,107,0.2), 0 0 0 2px var(--mustard);
+  margin: 0 auto;
 }
-
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
-}
-
-.avatar-ring {
-  position: absolute;
-  inset: -12px;
-  border-radius: 50%;
-  border: 1.5px solid transparent;
-  border-top-color: var(--accent);
-  border-right-color: rgba(212,185,106,0.25);
-  animation: spin 7s linear infinite;
-  z-index: 1;
-}
-
-.avatar-ring-outer {
-  position: absolute;
-  inset: -22px;
-  border-radius: 50%;
-  border: 1px solid transparent;
-  border-bottom-color: rgba(212,185,106,0.15);
-  animation: spin 12s linear infinite reverse;
-  z-index: 1;
-}
-
-@keyframes spin { to { transform: rotate(360deg); } }
-
-.avatar-glow {
-  position: absolute;
-  inset: -36px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(212,185,106,0.1) 0%, transparent 70%);
-  z-index: 0;
-  animation: pulse 5s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%,100% { opacity: .5; transform: scale(1); }
-  50%     { opacity: 1;  transform: scale(1.12); }
-}
-
-/* Hero Typography */
-.hero-name {
-  font-family: 'Playfair Display', 'Noto Sans JP', serif;
-  font-size: clamp(32px, 8vw, 56px);
-  font-weight: 700;
-  color: var(--text-light);
-  letter-spacing: 0.06em;
-  line-height: 1.2;
-  margin-bottom: 4px;
-}
-
-.hero-name-en {
-  font-size: clamp(11px, 2vw, 13px);
-  color: var(--text-dim);
-  font-weight: 400;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  margin-bottom: clamp(12px, 3vw, 20px);
-}
+.avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
 
 .hero-badge {
   display: inline-block;
-  font-size: clamp(11px, 2vw, 13px);
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  color: var(--accent);
-  border: 1px solid rgba(212,185,106,0.3);
-  padding: 6px 20px;
-  border-radius: 24px;
-  margin-bottom: clamp(20px, 4vw, 32px);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--mustard);
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+}
+
+.hero-name {
+  font-family: 'Playfair Display', 'Noto Sans JP', serif;
+  font-size: clamp(36px, 9vw, 60px);
+  font-weight: 700;
+  color: var(--text-navy);
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+.hero-name-en {
+  font-size: clamp(10px, 2vw, 12px);
+  color: var(--text-body-on-cream);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-bottom: clamp(20px, 4vw, 30px);
+  opacity: 0.55;
 }
 
 .hero-tagline {
-  font-family: 'Playfair Display', 'Noto Sans JP', serif;
-  font-size: clamp(15px, 3.2vw, 19px);
-  color: var(--text-body);
-  line-height: 2;
-  font-weight: 400;
-  max-width: 360px;
+  font-size: clamp(20px, 5vw, 32px);
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  margin-bottom: clamp(8px, 2vw, 12px);
+}
+.hero-tagline .dig { color: var(--navy); }
+.hero-tagline .sep { color: var(--mustard); margin: 0 4px; }
+.hero-tagline .ana { color: var(--text-body-on-cream); }
+
+.hero-sub {
+  font-size: clamp(13px, 2.4vw, 15px);
+  color: var(--text-body-on-cream);
+  line-height: 1.9;
+  max-width: 400px;
+  opacity: 0.8;
+  margin-bottom: clamp(32px, 6vw, 48px);
 }
 
 .hero-affiliations {
-  margin-top: clamp(28px, 5vw, 44px);
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 7px;
   width: 100%;
-  max-width: 380px;
-  padding: clamp(18px, 3.5vw, 22px) clamp(18px, 4vw, 24px);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  max-width: 340px;
+  padding: clamp(14px,3vw,18px) clamp(14px,4vw,20px);
+  border: 1px solid var(--border-cream);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.55);
+  margin: 0 auto;
 }
-
 .hero-aff-item {
   display: grid;
-  grid-template-columns: 70px 1fr;
+  grid-template-columns: 72px 1fr;
+  gap: 10px;
   align-items: baseline;
-  gap: 12px;
-  font-size: clamp(11px, 2.2vw, 13px);
   text-align: left;
 }
-
 .hero-aff-role {
   font-size: 9px;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 600;
+  color: var(--navy);
+  font-weight: 700;
 }
-
-.hero-aff-name {
-  color: var(--text-light);
-  font-weight: 500;
-  letter-spacing: 0.04em;
-}
+.hero-aff-name { font-size: clamp(11px,2vw,13px); color: var(--text-navy); font-weight: 500; }
 
 .scroll-cue {
   position: absolute;
   bottom: clamp(20px, 4vw, 36px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  color: var(--text-dim);
-  font-size: 10px;
-  letter-spacing: 0.25em;
+  font-size: 9px;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
+  color: var(--text-body-on-cream);
+  opacity: 0.4;
   animation: bob 2.5s ease-in-out infinite;
 }
-
 .scroll-cue::after {
   content: '';
   width: 1px;
-  height: 32px;
-  background: linear-gradient(to bottom, var(--accent), transparent);
+  height: 28px;
+  background: linear-gradient(to bottom, var(--navy), transparent);
 }
-
 @keyframes bob {
-  0%,100% { transform: translateY(0); opacity: 1; }
-  50%     { transform: translateY(8px); opacity: .4; }
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(8px); }
 }
 
-/* ═══════════════════════════════════
-   SECTIONS
-   ═══════════════════════════════════ */
+/* ═══ SECTION共通 ═══ */
 .section {
-  max-width: 700px;
+  max-width: var(--content-w);
   margin: 0 auto;
-  padding: var(--section-gap) 28px;
+  padding: var(--section-gap) clamp(24px, 5vw, 40px);
 }
 
-/* Full-width dark band */
-.band {
-  background: var(--bg-alt);
-}
+.bg-navy  { background: var(--navy); }
+.bg-cream { background: var(--cream); }
+.bg-cream-dark { background: var(--cream-dark); }
 
-.band-warm {
-  background: var(--bg-warm);
-}
-
-/* Section eyebrow */
 .eyebrow {
-  font-size: clamp(10px, 1.8vw, 11px);
-  letter-spacing: 0.3em;
+  font-size: 10px;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 600;
-  margin-bottom: clamp(20px, 4vw, 32px);
+  font-weight: 700;
+  margin-bottom: clamp(24px, 5vw, 40px);
   display: flex;
   align-items: center;
   gap: 12px;
 }
-
 .eyebrow::before {
   content: '';
-  width: 24px;
+  width: 20px;
   height: 2px;
-  background: var(--accent);
-}
-
-/* ═══════════════════════════════════
-   ABOUT
-   ═══════════════════════════════════ */
-.about-poem {
-  font-family: 'Playfair Display', 'Noto Sans JP', serif;
-  font-size: clamp(15px, 3vw, 18px);
-  line-height: 2.2;
-  color: var(--text-body);
-  font-weight: 400;
-  white-space: pre-line;
-}
-
-.about-poem .em {
-  color: var(--text-light);
-  font-weight: 500;
-}
-
-.about-poem .strong {
-  color: var(--accent-bright);
-  font-weight: 600;
-}
-
-.about-poem .break {
-  display: block;
-  height: 1em;
-}
-
-.about-hashtag {
-  font-size: clamp(11px, 2vw, 13px);
-  letter-spacing: 0.08em;
-  color: var(--text-dim);
-  margin-top: clamp(24px, 5vw, 40px);
-}
-
-/* ═══════════════════════════════════
-   BUSINESS
-   ═══════════════════════════════════ */
-.biz-card {
-  background: var(--surface);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-left: 2px solid var(--accent);
-  border-radius: 0 10px 10px 0;
-  padding: clamp(12px, 2.5vw, 16px) clamp(16px, 3vw, 20px);
-  margin-bottom: 8px;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-  position: relative;
-}
-
-.biz-card:hover {
-  transform: translateX(4px);
-  box-shadow: var(--card-shadow);
-}
-
-.biz-card h3 {
-  font-family: 'Playfair Display', 'Noto Sans JP', serif;
-  font-size: clamp(14px, 2.6vw, 16px);
-  font-weight: 600;
-  color: var(--text-light);
-  margin-bottom: 4px;
-  letter-spacing: 0.02em;
-}
-
-.biz-card p {
-  font-size: clamp(11px, 2vw, 12.5px);
-  color: var(--text-body);
-  line-height: 1.6;
-}
-
-.biz-card p:empty {
-  display: none;
-}
-
-.biz-link {
-  display: inline-block;
-  margin-top: 8px;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 600;
-  opacity: 0.75;
-  transition: opacity 0.2s;
-}
-
-.biz-link:hover {
-  opacity: 1;
-}
-
-.biz-card-role {
-  font-size: 9px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 600;
-  margin-bottom: 6px;
-  display: block;
-}
-
-/* ═══════════════════════════════════
-   GALLERY CAROUSEL
-   ═══════════════════════════════════ */
-.gallery-wrap {
-  overflow: hidden;
-  padding: var(--section-gap) 0;
-  background: var(--bg-alt);
-}
-
-.gallery-header {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 0 28px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.gallery-header .eyebrow {
-  margin-bottom: 0;
-}
-
-.gallery-hp-link {
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 600;
-  opacity: 0.7;
-  transition: opacity 0.2s;
-  white-space: nowrap;
-}
-
-.gallery-hp-link:hover {
-  opacity: 1;
-}
-
-.carousel {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px 0;
-}
-
-.carousel-track {
-  display: flex;
-  gap: 16px;
-  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: transform;
-}
-
-.carousel-slide {
+  background: currentColor;
   flex-shrink: 0;
-  width: clamp(260px, 65vw, 420px);
-  aspect-ratio: 4/3;
-  border-radius: 16px;
-  overflow: hidden;
-  position: relative;
-  opacity: 0.4;
-  transform: scale(0.9);
-  transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
-  background: var(--surface);
-  border: 1px solid var(--border);
 }
+.eyebrow.on-navy  { color: var(--mustard); }
+.eyebrow.on-cream { color: var(--navy); }
 
-.carousel-slide.active {
-  opacity: 1;
-  transform: scale(1);
-  box-shadow: 0 12px 40px rgba(212,185,106,0.12);
-  border-color: var(--border-hover);
+/* ═══ WHY ═══ */
+.why-lead {
+  font-family: 'Playfair Display', 'Noto Sans JP', serif;
+  font-size: clamp(19px, 4vw, 28px);
+  font-weight: 700;
+  color: var(--text-cream);
+  line-height: 1.75;
+  margin-bottom: clamp(24px, 5vw, 40px);
+  border-left: 4px solid var(--mustard);
+  padding-left: clamp(16px, 3vw, 24px);
 }
-
-.carousel-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.why-body {
+  font-size: clamp(14px, 2.6vw, 16px);
+  color: var(--text-body-on-navy);
+  line-height: 2.1;
 }
+.why-body .em { color: var(--mustard); font-weight: 600; }
+.why-body strong { color: var(--mustard); }
 
-.carousel-caption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 28px 18px 14px;
-  font-size: clamp(12px, 2.2vw, 14px);
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: 0.05em;
-  background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
-  pointer-events: none;
-}
-
-/* Dots */
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 20px;
-}
-
-.carousel-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--text-dim);
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.3s;
-  padding: 0;
-}
-
-.carousel-dot.active {
-  background: var(--accent);
-  transform: scale(1.3);
-}
-
-/* Nav arrows */
-.carousel-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(212,185,106,0.1);
-  border: 1px solid var(--border);
-  color: var(--accent);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  transition: background 0.3s;
-  backdrop-filter: blur(8px);
-}
-
-.carousel-nav:hover {
-  background: rgba(212,185,106,0.2);
-}
-
-.carousel-prev { left: clamp(8px, 3vw, 24px); }
-.carousel-next { right: clamp(8px, 3vw, 24px); }
-
-.carousel-nav svg {
-  width: 18px;
-  height: 18px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-}
-
-/* ═══════════════════════════════════
-   STORY (Career chapters)
-   ═══════════════════════════════════ */
-.story-chapter {
-  position: relative;
-  margin-bottom: clamp(48px, 10vw, 72px);
-  padding-left: 0;
-}
-
+/* ═══ WHO / STORY ═══ */
+.story-chapter { margin-bottom: clamp(48px, 10vw, 76px); }
 .story-chapter:last-child { margin-bottom: 0; }
 
-.story-chapter-num {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(11px, 1.8vw, 12px);
-  font-weight: 600;
-  letter-spacing: 0.25em;
+.chapter-num {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 6px;
+  color: var(--navy);
+  margin-bottom: 8px;
 }
-
-.story-chapter-title {
+.chapter-title {
   font-family: 'Playfair Display', 'Noto Sans JP', serif;
   font-size: clamp(22px, 5vw, 30px);
   font-weight: 700;
-  color: var(--text-light);
+  color: var(--text-navy);
   line-height: 1.3;
-  margin-bottom: clamp(8px, 2vw, 12px);
+  margin-bottom: 6px;
 }
-
-.story-chapter-sub {
-  font-size: clamp(12px, 2vw, 13px);
+.chapter-sub {
+  font-size: clamp(11px, 2vw, 13px);
   font-weight: 600;
-  color: var(--accent);
-  letter-spacing: 0.08em;
-  margin-bottom: clamp(16px, 3vw, 24px);
+  color: var(--navy);
+  letter-spacing: 0.06em;
+  margin-bottom: clamp(14px, 3vw, 20px);
+  opacity: 0.7;
 }
-
-.story-body {
-  font-family: 'Noto Sans JP', sans-serif;
+.chapter-body {
   font-size: clamp(14px, 2.6vw, 15px);
   line-height: 2.1;
-  color: var(--text-body);
+  color: var(--text-body-on-cream);
 }
-
-.story-body .em {
-  color: var(--text-light);
-}
-
-.story-body .strong {
-  color: var(--accent-bright);
-  font-weight: 600;
-}
-
-.story-body .break {
-  display: block;
-  height: 0.8em;
-}
+.chapter-body .em { color: var(--navy); font-weight: 600; }
+.chapter-body .strong { color: var(--text-navy); font-weight: 700; }
+.chapter-body .br { display: block; height: 0.8em; }
 
 .story-quote {
   font-family: 'Playfair Display', 'Noto Sans JP', serif;
-  font-size: clamp(15px, 3vw, 18px);
+  font-size: clamp(14px, 2.8vw, 17px);
   font-weight: 500;
-  color: var(--text-light);
-  line-height: 2;
-  border-left: 3px solid var(--accent);
-  padding: clamp(14px, 3vw, 20px) clamp(16px, 4vw, 24px);
-  background: rgba(212,185,106,0.03);
-  border-radius: 0 10px 10px 0;
-  margin-top: clamp(16px, 3vw, 24px);
-}
-
-/* Divider between chapters */
-.story-divider {
-  width: 40px;
-  height: 1px;
-  background: linear-gradient(to right, var(--accent), transparent);
-  margin: 0 auto clamp(48px, 10vw, 72px);
-  opacity: 0.4;
-}
-
-/* Stagger story chapters */
-.fade-in.visible .story-chapter { animation: slideUp .6s ease both; }
-.fade-in.visible .story-chapter:nth-child(1) { animation-delay: 0s; }
-.fade-in.visible .story-divider:nth-child(2) { animation: slideUp .6s ease both; animation-delay: .1s; }
-.fade-in.visible .story-chapter:nth-child(3) { animation-delay: .2s; }
-.fade-in.visible .story-divider:nth-child(4) { animation: slideUp .6s ease both; animation-delay: .3s; }
-.fade-in.visible .story-chapter:nth-child(5) { animation-delay: .4s; }
-.fade-in.visible .story-divider:nth-child(6) { animation: slideUp .6s ease both; animation-delay: .5s; }
-.fade-in.visible .story-chapter:nth-child(7) { animation-delay: .6s; }
-.fade-in.visible .story-divider:nth-child(8) { animation: slideUp .6s ease both; animation-delay: .7s; }
-.fade-in.visible .story-chapter:nth-child(9) { animation-delay: .8s; }
-
-/* ═══════════════════════════════════
-   VALUES
-   ═══════════════════════════════════ */
-.values-quote {
-  font-family: 'Playfair Display', 'Noto Sans JP', serif;
-  font-size: clamp(15px, 3vw, 19px);
-  font-weight: 600;
-  color: var(--text-light);
+  color: var(--text-navy);
   line-height: 1.9;
-  border-left: 4px solid var(--accent);
-  background: rgba(212,185,106,0.04);
-  border-radius: 0 12px 12px 0;
-  padding: clamp(16px, 3vw, 24px) clamp(16px, 4vw, 28px);
+  border-left: 3px solid var(--mustard);
+  padding: clamp(12px,2.5vw,18px) clamp(14px,3vw,22px);
+  background: rgba(27,58,107,0.05);
+  border-radius: 0 10px 10px 0;
+  margin-top: clamp(14px,3vw,22px);
+}
+
+.story-divider {
+  width: 32px;
+  height: 2px;
+  background: var(--mustard);
+  margin: clamp(44px,9vw,72px) 0;
+  opacity: 0.5;
+}
+
+/* ═══ WHAT ═══ */
+.what-intro {
+  max-width: var(--content-w);
+  margin: 0 auto;
+  padding: var(--section-gap) clamp(24px,5vw,40px) clamp(40px,8vw,56px);
+  text-align: center;
+}
+.what-intro .eyebrow { justify-content: center; }
+.what-intro .eyebrow::before { display: none; }
+.what-tagline {
+  font-family: 'Playfair Display', 'Noto Sans JP', serif;
+  font-size: clamp(17px, 3.8vw, 25px);
+  font-weight: 700;
+  color: var(--text-navy);
+  line-height: 1.75;
+  margin-bottom: clamp(10px,2vw,14px);
+}
+.what-desc {
+  font-size: clamp(13px, 2.4vw, 15px);
+  color: var(--text-body-on-cream);
+  line-height: 2;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+/* 2面 */
+.dual-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.dual-panel {
+  padding: clamp(44px, 8vw, 76px) clamp(24px, 5vw, 52px);
+  display: flex;
+  flex-direction: column;
+}
+.dual-panel.digital { background: var(--navy); }
+.dual-panel.analog  { background: var(--cream-dark); }
+
+.panel-label {
+  font-size: 9px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 20px;
+  display: inline-block;
   margin-bottom: clamp(24px, 5vw, 40px);
+  align-self: flex-start;
+}
+.digital .panel-label { background: var(--mustard); color: var(--navy); }
+.analog  .panel-label { background: var(--navy);    color: var(--cream); }
+
+.panel-heading {
+  font-family: 'Playfair Display', 'Noto Sans JP', serif;
+  font-size: clamp(19px, 3.5vw, 26px);
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: clamp(8px, 2vw, 12px);
+}
+.digital .panel-heading { color: var(--text-cream); }
+.analog  .panel-heading { color: var(--text-navy); }
+
+.panel-sub {
+  font-size: clamp(12px, 2vw, 14px);
+  line-height: 1.85;
+  margin-bottom: clamp(24px, 5vw, 40px);
+}
+.digital .panel-sub { color: var(--text-body-on-navy); }
+.analog  .panel-sub { color: var(--text-body-on-cream); }
+
+.biz-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+.biz-item {
+  padding: clamp(12px,2.5vw,16px);
+  border-radius: 10px;
+  border: 1px solid;
+}
+.digital .biz-item { border-color: var(--border-navy);  background: rgba(255,255,255,0.04); }
+.analog  .biz-item { border-color: var(--border-cream); background: rgba(255,255,255,0.55); }
+
+.biz-item-role {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.digital .biz-item-role { color: var(--mustard); }
+.analog  .biz-item-role { color: var(--navy); }
+
+.biz-item-name {
+  font-size: clamp(13px, 2.4vw, 15px);
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+.digital .biz-item-name { color: var(--text-cream); }
+.analog  .biz-item-name { color: var(--text-navy); }
+
+.biz-item-desc {
+  font-size: clamp(11px, 1.9vw, 12px);
+  line-height: 1.65;
+}
+.digital .biz-item-desc { color: var(--text-body-on-navy); }
+.analog  .biz-item-desc { color: var(--text-body-on-cream); }
+
+/* ═══ GALLERY ═══ */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.gallery-item {
+  aspect-ratio: 4/3;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border-navy);
+}
+.gallery-item img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.5s ease;
+}
+.gallery-item:hover img { transform: scale(1.04); }
+
+/* ═══ VISION ═══ */
+.vision-quote {
+  font-family: 'Playfair Display', 'Noto Sans JP', serif;
+  font-size: clamp(16px, 3.2vw, 22px);
+  font-weight: 700;
+  color: var(--text-cream);
+  line-height: 1.85;
+  border-left: 4px solid var(--mustard);
+  padding: clamp(16px,3vw,24px) clamp(18px,4vw,28px);
+  background: rgba(255,255,255,0.04);
+  border-radius: 0 12px 12px 0;
+  margin-bottom: clamp(36px, 8vw, 60px);
 }
 
 .values-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
 }
-
 .val-card {
-  display: flex;
-  align-items: flex-start;
-  gap: clamp(14px, 3vw, 20px);
-  background: var(--surface);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: clamp(16px, 3vw, 22px);
-  transition: border-color 0.35s, transform 0.35s;
-}
-
-.val-card:hover {
-  border-color: var(--border-hover);
-  transform: translateY(-3px);
-}
-
-.val-icon {
-  width: 44px;
-  height: 44px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-navy);
   border-radius: 12px;
-  background: var(--accent-dim);
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: var(--accent);
+  padding: clamp(16px,3vw,22px);
+  transition: border-color 0.3s, background 0.3s;
 }
-
-.val-icon svg {
-  width: 20px;
-  height: 20px;
+.val-card:hover {
+  border-color: rgba(232,184,75,0.35);
+  background: rgba(255,255,255,0.07);
 }
-
 .val-card h4 {
   font-family: 'Playfair Display', 'Noto Sans JP', serif;
-  font-size: clamp(15px, 2.8vw, 17px);
-  font-weight: 600;
-  color: var(--text-light);
-  margin-bottom: 4px;
+  font-size: clamp(14px, 2.6vw, 17px);
+  font-weight: 700;
+  color: var(--mustard);
+  margin-bottom: 5px;
 }
-
 .val-card p {
-  font-size: clamp(12px, 2.2vw, 13px);
-  line-height: 1.7;
+  font-size: clamp(11px, 2vw, 13px);
+  line-height: 1.75;
+  color: var(--text-body-on-navy);
 }
 
-/* ═══════════════════════════════════
-   PHARMA EIGHT
-   ═══════════════════════════════════ */
-.pe-wrap {
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(ellipse at 20% 30%, rgba(212,185,106,0.08) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 70%, rgba(80,120,180,0.05) 0%, transparent 60%),
-    var(--bg-alt);
-}
-
-.pe-card {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: clamp(36px, 7vw, 56px) clamp(24px, 5vw, 40px);
-  text-align: center;
-  position: relative;
-}
-
-.pe-cover {
-  width: 100%;
-  max-width: 640px;
-  margin: 0 auto clamp(24px, 5vw, 36px);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.06);
-  aspect-ratio: 16 / 9;
-  background: #0d2a3f;
-}
-
-.pe-cover img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
-
-.pe-desc {
-  font-size: clamp(13px, 2.5vw, 15px);
-  color: var(--text-body);
-  line-height: 2;
-  max-width: 480px;
-  margin: 0 auto clamp(28px, 5vw, 40px);
-}
-
-.pe-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px clamp(22px, 4vw, 32px);
-  background: #06C755;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: clamp(13px, 2.4vw, 14px);
-  letter-spacing: 0.06em;
-  box-shadow: 0 4px 18px rgba(6, 199, 85, 0.25);
-  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-}
-
-.pe-cta:hover {
-  transform: translateY(-2px);
-  background: #05b34c;
-  box-shadow: 0 8px 24px rgba(6, 199, 85, 0.35);
-}
-
-.pe-cta svg {
-  width: 18px;
-  height: 18px;
-  fill: #fff;
-}
-
-/* ═══════════════════════════════════
-   CONTACT
-   ═══════════════════════════════════ */
+/* ═══ CONTACT ═══ */
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
 }
-
 .ct-link {
   display: flex;
   align-items: center;
-  gap: clamp(14px, 3vw, 18px);
-  background: var(--surface);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border);
+  gap: clamp(12px,2.5vw,16px);
+  background: rgba(255,255,255,0.55);
+  border: 1px solid var(--border-cream);
   border-radius: 14px;
-  padding: clamp(14px, 3vw, 18px) clamp(16px, 3vw, 22px);
+  padding: clamp(14px,3vw,18px) clamp(14px,3vw,18px);
   text-decoration: none;
   color: inherit;
-  cursor: pointer;
-  transition: border-color 0.35s, transform 0.3s, box-shadow 0.35s;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
-
 .ct-link:hover {
-  border-color: var(--border-hover);
-  transform: translateX(6px);
-  box-shadow: 0 4px 20px rgba(212,185,106,0.06);
+  border-color: var(--navy);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(27,58,107,0.1);
 }
-
 .ct-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: var(--accent-dim);
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: var(--navy);
+  display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
-  transition: background 0.3s, box-shadow 0.3s;
 }
-
-.ct-link:hover .ct-icon {
-  background: rgba(212,185,106,0.15);
-  box-shadow: 0 0 14px rgba(212,185,106,0.12);
-}
-
-.ct-icon svg {
-  width: 18px;
-  height: 18px;
-  stroke: var(--accent);
-  fill: none;
-}
-
+.ct-icon svg { width: 17px; height: 17px; stroke: var(--mustard); fill: none; stroke-width: 1.8; }
 .ct-label {
-  font-size: 10px;
-  color: var(--text-dim);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 600;
-  margin-bottom: 2px;
+  font-size: 9px; color: var(--navy);
+  letter-spacing: 0.12em; text-transform: uppercase;
+  font-weight: 700; opacity: 0.6; margin-bottom: 2px;
 }
-
-.ct-link > div:last-child {
-  min-width: 0;
-  flex: 1;
-}
-
 .ct-value {
-  font-size: clamp(13px, 2.4vw, 15px);
-  font-weight: 500;
-  color: var(--text-light);
-  word-break: keep-all;
-  overflow-wrap: anywhere;
-  line-height: 1.5;
+  font-size: clamp(12px,2.2vw,14px); font-weight: 600;
+  color: var(--text-navy); overflow-wrap: anywhere; line-height: 1.4;
 }
 
-/* ═══════════════════════════════════
-   FOOTER
-   ═══════════════════════════════════ */
+/* ═══ FOOTER ═══ */
 footer {
+  background: var(--navy);
   text-align: center;
-  padding: clamp(32px, 8vw, 56px) 28px clamp(48px, 10vw, 72px);
-  font-size: 11px;
-  color: var(--text-dim);
-  letter-spacing: 0.1em;
+  padding: clamp(40px, 8vw, 64px) 28px clamp(56px, 12vw, 88px);
 }
-
-footer::before {
-  content: '';
-  display: block;
-  width: 40px;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--accent), transparent);
-  margin: 0 auto clamp(16px, 3vw, 24px);
-  opacity: 0.35;
-}
-
 .footer-tagline {
   font-family: 'Playfair Display', serif;
-  font-size: 13px;
-  color: var(--text-dim);
-  letter-spacing: 0.18em;
-  margin-bottom: 12px;
+  font-size: clamp(14px, 2.6vw, 18px);
+  color: var(--mustard);
   font-style: italic;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
 }
+.footer-copy { font-size: 11px; color: var(--text-body-on-navy); letter-spacing: 0.1em; }
 
-/* ═══════════════════════════════════
-   BACK TO TOP
-   ═══════════════════════════════════ */
+/* ═══ BACK TO TOP ═══ */
 .back-to-top {
   position: fixed;
-  bottom: clamp(20px, 4vw, 32px);
-  right: clamp(20px, 4vw, 32px);
+  bottom: clamp(20px,4vw,32px); right: clamp(20px,4vw,32px);
   z-index: 500;
-  width: 44px;
-  height: 44px;
+  width: 44px; height: 44px;
   border-radius: 50%;
-  background: rgba(212,185,106,0.12);
-  border: 1px solid var(--border);
-  color: var(--accent);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.35s, transform 0.35s, background 0.3s;
+  background: var(--mustard);
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transform: translateY(12px);
+  transition: opacity 0.35s, transform 0.35s;
   pointer-events: none;
+  box-shadow: 0 4px 18px rgba(232,184,75,0.4);
 }
+.back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.back-to-top svg { width: 18px; height: 18px; stroke: var(--navy); fill: none; stroke-width: 2.5; }
 
-.back-to-top.visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.back-to-top:hover {
-  background: rgba(212,185,106,0.22);
-}
-
-.back-to-top svg {
-  width: 18px;
-  height: 18px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-}
-
-/* ═══════════════════════════════════
-   ANIMATIONS
-   ═══════════════════════════════════ */
+/* ═══ FADE-IN ═══ */
 .fade-in {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
 
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Stagger children */
-.fade-in.visible .biz-card { animation: slideUp .5s ease both; }
-.fade-in.visible .biz-card:nth-child(1) { animation-delay: 0s; }
-.fade-in.visible .biz-card:nth-child(2) { animation-delay: .08s; }
-.fade-in.visible .biz-card:nth-child(3) { animation-delay: .16s; }
-.fade-in.visible .biz-card:nth-child(4) { animation-delay: .24s; }
-.fade-in.visible .biz-card:nth-child(5) { animation-delay: .32s; }
-
-.fade-in.visible .tl-item { animation: slideUp .5s ease both; }
-.fade-in.visible .tl-item:nth-child(1) { animation-delay: 0s; }
-.fade-in.visible .tl-item:nth-child(2) { animation-delay: .08s; }
-.fade-in.visible .tl-item:nth-child(3) { animation-delay: .16s; }
-.fade-in.visible .tl-item:nth-child(4) { animation-delay: .24s; }
-.fade-in.visible .tl-item:nth-child(5) { animation-delay: .32s; }
-.fade-in.visible .tl-item:nth-child(6) { animation-delay: .40s; }
-
-.fade-in.visible .val-card { animation: slideUp .5s ease both; }
-.fade-in.visible .val-card:nth-child(1) { animation-delay: 0s; }
-.fade-in.visible .val-card:nth-child(2) { animation-delay: .08s; }
-.fade-in.visible .val-card:nth-child(3) { animation-delay: .16s; }
-.fade-in.visible .val-card:nth-child(4) { animation-delay: .24s; }
-.fade-in.visible .val-card:nth-child(5) { animation-delay: .32s; }
-
-.fade-in.visible .ct-link { animation: slideUp .5s ease both; }
-.fade-in.visible .ct-link:nth-child(1) { animation-delay: 0s; }
-.fade-in.visible .ct-link:nth-child(2) { animation-delay: .08s; }
-.fade-in.visible .ct-link:nth-child(3) { animation-delay: .16s; }
-
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ═══════════════════════════════════
-   DESKTOP
-   ═══════════════════════════════════ */
-@media (min-width: 640px) {
-  .values-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .contact-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (min-width: 768px) {
-  .section { padding: var(--section-gap) 40px; }
-  .values-grid {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 680px) {
+  .hero::before { display: none; }
+  .dual-wrap { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
 </head>
 <body>
 
-<!-- ═══ FLOATING NAV ═══ -->
+<!-- NAV -->
 <nav class="site-nav" id="siteNav">
   <a class="nav-logo" href="#hero">小池 雄悟</a>
   <ul class="nav-links">
-    <li><a href="#business">Business</a></li>
-    <li><a href="#story">Story</a></li>
-    <li><a href="#values">Values</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#why">WHY</a></li>
+    <li><a href="#who">WHO</a></li>
+    <li><a href="#what">WHAT</a></li>
+    <li><a href="#vision">VISION</a></li>
+    <li><a href="#contact">CONTACT</a></li>
   </ul>
 </nav>
 
-<!-- ═══ HERO ═══ -->
-<div class="hero" id="hero">
+<!-- HERO -->
+<section class="hero" id="hero">
   <div class="avatar-wrap">
-    <div class="avatar-glow"></div>
-    <div class="avatar-ring-outer"></div>
-    <div class="avatar-ring"></div>
-    <div class="avatar"><img src="avatar.jpg" alt="Yugo Koike"></div>
+    <div class="avatar"><img src="avatar.jpg" alt="小池 雄悟"></div>
   </div>
+
+  <p class="hero-badge">複業家</p>
   <h1 class="hero-name">小池 雄悟</h1>
   <p class="hero-name-en">Yugo Koike</p>
-  <p class="hero-badge">複業家</p>
+
   <p class="hero-tagline">
-    情緒経済を生きる。
+    <span class="dig">デジたる。</span><span class="sep">×</span><span class="ana">アナろぐ。</span>
   </p>
+  <p class="hero-sub">
+    便利なものは便利に使い、<br>人間らしいことに時間を使う。
+  </p>
+
   <div class="hero-affiliations">
     <div class="hero-aff-item">
       <span class="hero-aff-role">CEO</span>
@@ -1122,133 +643,42 @@ footer::before {
       <span class="hero-aff-name">株式会社FMI</span>
     </div>
   </div>
+
   <div class="scroll-cue">scroll</div>
-</div>
+</section>
 
-
-<!-- ═══ BUSINESS ═══ -->
-<div class="section fade-in" id="business">
-  <div class="eyebrow">Business</div>
-
-  <div class="biz-card">
-    <span class="biz-card-role">CEO</span>
-    <h3>株式会社YUMEMATCH</h3>
-    <p>ビジネスコーチング / キャリアコーチング / Pharma Eight∞（薬剤師向け複業スクール）/ 業務効率化コンサル（AIをつかった便利ツール作成など）</p>
-  </div>
-
-  <div class="biz-card">
-    <span class="biz-card-role">代表</span>
-    <h3>はなひらくグループ</h3>
-    <p>就労支援B型事業所 / グループホーム / 製菓ブランド「叶花-kanoka-」/ お弁当事業「花咲く弁当」/ 水耕栽培プラント</p>
-  </div>
-
-  <div class="biz-card">
-    <span class="biz-card-role">代表</span>
-    <h3>未来設計Lab. 炉-irori-</h3>
-    <p>住宅相談（引越し・住宅購入・ローン）/ 相続関連相談 / 保険相談 / 資産形成相談 / 通信関連 / ウォーターサーバー</p>
-  </div>
-
-  <div class="biz-card">
-    <span class="biz-card-role">COO</span>
-    <h3>有限会社松本調剤薬局</h3>
-    <p>地域密着型調剤薬局。COOとして経営基盤の強化と地域医療への貢献に携わる。</p>
-  </div>
-
-  <div class="biz-card">
-    <span class="biz-card-role">執行役員</span>
-    <h3>株式会社FMI</h3>
-    <p>執行役員として財務・マーケティング戦略に参画。</p>
-  </div>
-</div>
-
-<!-- ═══ GALLERY ═══ -->
-<div class="gallery-wrap fade-in" id="gallery">
-  <div class="gallery-header">
-    <div class="eyebrow">Gallery — はなひらくグループ</div>
-    <a href="https://fmi-hanahiraku.com/" class="gallery-hp-link" target="_blank" rel="noopener">公式サイト →</a>
-  </div>
-  <div class="carousel">
-    <button class="carousel-nav carousel-prev" aria-label="前へ">
-      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
-    <div class="carousel-track" id="carouselTrack">
-      <div class="carousel-slide">
-        <img src="gallery/kanoka.png" alt="叶花 -kanoka-">
-        <div class="carousel-caption">叶花 -kanoka-</div>
-      </div>
-      <div class="carousel-slide">
-        <img src="gallery/kanoka2.jpg" alt="叶花 -kanoka- 素材">
-        <div class="carousel-caption">叶花 -kanoka-</div>
-      </div>
-      <div class="carousel-slide">
-        <img src="gallery/hanasaku_bento.png" alt="花咲く弁当">
-        <div class="carousel-caption">花咲く弁当</div>
-      </div>
-      <div class="carousel-slide">
-        <img src="gallery/hydroponics.jpg" alt="水耕栽培プラント">
-        <div class="carousel-caption">水耕栽培プラント</div>
-      </div>
-      <div class="carousel-slide">
-        <img src="gallery/img01.jpeg" alt="はなひらく">
-      </div>
-      <div class="carousel-slide">
-        <img src="gallery/img02.jpeg" alt="はなひらく">
-      </div>
-      <div class="carousel-slide">
-        <img src="gallery/img03.jpeg" alt="はなひらく">
-      </div>
-      <div class="carousel-slide">
-        <img src="gallery/photo01.jpg" alt="はなひらくグループ">
-      </div>
-      <div class="carousel-slide">
-        <img src="gallery/photo02.jpg" alt="はなひらくグループ">
-      </div>
-      <div class="carousel-slide">
-        <img src="gallery/photo03.jpg" alt="はなひらくグループ">
-      </div>
-    </div>
-    <button class="carousel-nav carousel-next" aria-label="次へ">
-      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-    </button>
-  </div>
-  <div class="carousel-dots" id="carouselDots"></div>
-</div>
-
-<!-- ═══ PHARMA EIGHT∞ ═══ -->
-<div class="pe-wrap fade-in">
-  <div class="pe-card">
-    <div class="pe-cover">
-      <img src="pharma_eight_cover.png" alt="Pharma Eight∞ — 薬剤師の職域展開サービス">
-    </div>
-    <p class="pe-desc">
-      「処方される側の人生から、自分で処方する人生へ。」<br>
-      薬剤師としての専門性を活かし、自分の人生をデザインする仲間が集まるコミュニティ。
-    </p>
-    <a href="https://lin.ee/n2P3rG5" class="pe-cta" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-      LINE公式で詳細を見る
-    </a>
-  </div>
-</div>
-
-<!-- ═══ CAREER / STORY ═══ -->
-<div class="band-warm" id="story">
+<!-- WHY -->
+<div class="bg-navy" id="why">
   <div class="section fade-in">
-    <div class="eyebrow">Story</div>
+    <div class="eyebrow on-navy">WHY — なぜ、やるのか</div>
+    <p class="why-lead">
+      「志がある人が、本来やりたいことを<br>やれる状態を作る。」
+    </p>
+    <div class="why-body">
+      障がいを抱える家族のそばで、<span class="em">「なりたい自分」と「置かれた現実」の間にある壁</span>を間近に見てきた。精神科医を目指し、断念し、薬学部で出会った一つの言葉——<br><br>
+      <strong>「くすり」とは、「苦をすりへらすもの」。</strong><br><br>
+      介護職になりたくて選んだのに書類に追われている人。料理で人を喜ばせたくて飲食店を開いたのに事務作業で一日が終わる人。志はある、でも<span class="em">作業に縛られている</span>——そういう人の苦をすりへらしたい。<br><br>
+      AIで時間を取り戻した先に、人間らしい場と関係が生まれる。それが小池雄悟の仕事の核心。
+    </div>
+  </div>
+</div>
+
+<!-- WHO -->
+<div class="bg-cream" id="who">
+  <div class="section fade-in">
+    <div class="eyebrow on-cream">WHO — これまでの軌跡</div>
 
     <div class="story-chapter">
-      <div class="story-chapter-num">Chapter 01</div>
-      <h2 class="story-chapter-title">原点</h2>
-      <div class="story-chapter-sub">1992 — 長野県岡谷市に生まれる</div>
-      <div class="story-body">
+      <div class="chapter-num">Chapter 01</div>
+      <h2 class="chapter-title">原点</h2>
+      <div class="chapter-sub">1992 — 長野県岡谷市に生まれる</div>
+      <div class="chapter-body">
         長野県岡谷市出身。小学校から大学まで13年間、野球を続けた。高校では野球部をゼロから立ち上げ、<span class="em">仲間と一つの目標に向かって走る楽しさ</span>を学んだ。
-        <span class="break"></span>
+        <span class="br"></span>
         発達障害を抱える家族のそばで、本人の感情的な苦しみや社会的な課題を間近に見てきた。医者を志して2年浪人したものの断念し、立命館大学薬学部に進学した。
-        <span class="break"></span>
+        <span class="br"></span>
         大学時代、ある言葉に出会う。
-        <div class="story-quote">
-          「くすり」とは、「苦をすりへらすもの」。
-        </div>
+        <div class="story-quote">「くすり」とは、「苦をすりへらすもの」。</div>
         苦をすりへらすことで、誰もが生きたい人生を生きられる社会をつくりたい。自分の進む方向が、少しずつ見えてきた。
       </div>
     </div>
@@ -1256,57 +686,40 @@ footer::before {
     <div class="story-divider"></div>
 
     <div class="story-chapter">
-      <div class="story-chapter-num">Chapter 02</div>
-      <h2 class="story-chapter-title">はじまり</h2>
-      <div class="story-chapter-sub">2018 — 個人事業主としてスタート</div>
-      <div class="story-body">
+      <div class="chapter-num">Chapter 02</div>
+      <h2 class="chapter-title">はじまり</h2>
+      <div class="chapter-sub">2018 — 個人事業主としてスタート</div>
+      <div class="chapter-body">
         大学在学中、日本薬学生連盟の代表を務めた。たくさんの人と出会うなかで、自分自身にも問いを立ててみた。
-        <span class="break"></span>
-        人生でやりたいこと、生きたい生き方、欲しいもの、ありたい自分。たくさんのウィッシュを書き出していくと、「自分の人生として100点」と言える状態が少しずつ見えてきた。ただ、そのほとんどは自分ひとりでは叶わないものばかりだった。
-        <span class="break"></span>
-        <span class="em">人から感謝される。人の人生のきっかけになる。10年、20年、30年と続いていく関係の人が、自分のまわりにどれだけいるか。</span>そういう生き方をしないと、自分の理想は叶わない。そう気づいた。
-        <span class="break"></span>
-        人の人生に長く伴走できる仕事として、ファイナンシャルプランナーを選んだ。当時はまだ学生だったので、お金の話というより、恋愛、人間関係、進路など、どんなテーマでも聞く「よろず相談」のような日々だった。学生時代だけで何百人もの話を聞かせてもらった。
+        <span class="br"></span>
+        人から感謝される。人の人生のきっかけになる。<span class="em">10年、20年と続いていく関係が、自分のまわりにどれだけいるか。</span>そういう生き方をしないと、自分の理想は叶わない。そう気づいた。
+        <span class="br"></span>
+        人の人生に長く伴走できる仕事として、ファイナンシャルプランナーを選んだ。
       </div>
     </div>
 
     <div class="story-divider"></div>
 
     <div class="story-chapter">
-      <div class="story-chapter-num">Chapter 03</div>
-      <h2 class="story-chapter-title">長野へ</h2>
-      <div class="story-chapter-sub">2019 — 長野で動き始める</div>
-      <div class="story-body">
-        2019年、大学を卒業してすぐに長野へ帰った。地元で動きたい、地元から始めたい、という思いが強かった。
-        <span class="break"></span>
-        自分の事業だけで食べていける状態ではなかったので、薬剤師として現場に立ちながら、相談業務も続けた。白衣の下にスーツを着て、薬剤師の仕事を終えると白衣を脱いでクライアントのところに向かう、そんな毎日だった。
-        <span class="break"></span>
-        その中で、「一緒に働きたい」「人生を変えたい」「これからどうしたらいい？」と声をかけてくれる仲間に出会った。彼らと一緒に、<span class="em">未来設計Lab. 炉-irori-</span> を長野・松本で立ち上げた。
+      <div class="chapter-num">Chapter 03</div>
+      <h2 class="chapter-title">長野へ</h2>
+      <div class="chapter-sub">2019 — 長野で動き始める</div>
+      <div class="chapter-body">
+        2019年、大学を卒業してすぐに長野へ帰った。薬剤師として現場に立ちながら相談業務を続けた。白衣の下にスーツを着て、薬剤師の仕事を終えると白衣を脱いでクライアントのところへ向かう、そんな毎日だった。
+        <span class="br"></span>
+        「一緒に働きたい」「人生を変えたい」と声をかけてくれる仲間と出会い、<span class="em">未来設計Lab. 炉-irori-</span>を長野・松本で立ち上げた。
       </div>
     </div>
 
     <div class="story-divider"></div>
 
     <div class="story-chapter">
-      <div class="story-chapter-num">Chapter 04</div>
-      <h2 class="story-chapter-title">エリア展開</h2>
-      <div class="story-chapter-sub">2021 — 東京・神奈川へ</div>
-      <div class="story-body">
-        長野で培ってきた動きを、東京・神奈川にも広げていった。住宅、保険、ブライダル、通信など、人の暮らしに関わるものを幅広く扱うFP事務所として、エリアを越えて展開している。
-        <span class="break"></span>
-        人の人生に伴走するなかで、自然とキャリアに関する相談が増えていった。「今の働き方を変えたい」「自分で事業を起こしたい」という声に応える形で、転職支援、起業化支援、事業立ち上げのサポートへと、<span class="em">提供できる手段を広げていった</span>。
-      </div>
-    </div>
-
-    <div class="story-divider"></div>
-
-    <div class="story-chapter">
-      <div class="story-chapter-num">Chapter 05</div>
-      <h2 class="story-chapter-title">はなひらく</h2>
-      <div class="story-chapter-sub">障がい福祉事業</div>
-      <div class="story-body">
+      <div class="chapter-num">Chapter 04</div>
+      <h2 class="chapter-title">はなひらく</h2>
+      <div class="chapter-sub">障がい福祉事業</div>
+      <div class="chapter-body">
         発達障害を抱える家族のそばで見てきた現実を、自分の手で事業として形にしている。それが障がい福祉事業「はなひらく」。
-        <span class="break"></span>
+        <span class="br"></span>
         就労支援B型事業所、グループホーム、製菓ブランド「叶花-kanoka-」、お弁当事業「花咲く弁当」、水耕栽培プラントを運営。<span class="strong">「できない」とされてきたことの中に、可能性を花ひらかせる場をつくっている。</span>
       </div>
     </div>
@@ -1314,91 +727,147 @@ footer::before {
     <div class="story-divider"></div>
 
     <div class="story-chapter">
-      <div class="story-chapter-num">Chapter 06</div>
-      <h2 class="story-chapter-title">Pharma Eight∞ / AI業務効率化</h2>
-      <div class="story-chapter-sub">薬剤師の複業スクールと、業務効率化コンサル</div>
-      <div class="story-body">
-        自分自身も薬剤師の一人。業界の仲間と話していると「処方を出すのは医師。もし薬剤師にも処方権があったら、働き方はまったく変わるはず」という声によく出会う。
-        <span class="break"></span>
-        能力も意欲も十分なのに、その力を発揮できる場が限られている薬剤師は決して少なくない。薬局業界自体が大きな変遷期を迎えている今、薬剤師は本当はもっといろんなフィールドで活躍していい人たちだと思う。
-        <span class="break"></span>
-        AIの発達で、かつて専門家にしか頼めなかったことも、誰の手にも届くようになってきた。だからこそ、「自分の人生を、自分はどう生きていくのか」を、それぞれが本気で考えていい時代になっている。
-        <div class="story-quote">
-          「処方される側の人生から、自分で処方する人生へ。」
-        </div>
-        この問いを掲げて、薬剤師向け複業スクール「Pharma Eight∞」を立ち上げた。並行して、AI導入を軸にした業務効率化コンサルティングも始めた。日々の業務に追われている現場に、<span class="em">時間と余白を取り戻していきたい</span>。
+      <div class="chapter-num">Chapter 05</div>
+      <h2 class="chapter-title">デジたる、出会い</h2>
+      <div class="chapter-sub">Pharma Eight∞ / AI業務効率化</div>
+      <div class="chapter-body">
+        能力も意欲もあるのに、業界の構造に可能性を閉じ込められた薬剤師たちの姿が気になっていた。
+        <div class="story-quote">「処方される側の人生から、自分で処方する人生へ。」</div>
+        そしてAIの発達は、その問いをさらに大きく押し広げた。AIに任せられることは任せて、<span class="em">自分にしかできないこと・本当にやりたいことに時間を使う</span>——それを仕事にする事業が生まれた。
       </div>
     </div>
 
     <div class="story-divider"></div>
 
     <div class="story-chapter">
-      <div class="story-chapter-num">Chapter 07</div>
-      <h2 class="story-chapter-title">夢の住所が集まる町</h2>
-      <div class="story-chapter-sub">2023 — Now</div>
-      <div class="story-body">
+      <div class="chapter-num">Chapter 06</div>
+      <h2 class="chapter-title">夢の住所が集まる町</h2>
+      <div class="chapter-sub">2023 — Now</div>
+      <div class="chapter-body">
         目の前の人に対して、自分にできることをひとつずつ続けてきた。気づいたら、業種も世代もバラバラな人たちが、自分のまわりに集まっていた。
-        <span class="break"></span>
-        最近よく考えているのは「情緒経済」という言葉。<span class="em">効率や利益だけでなく、人の心や感情そのものを価値の源泉にする経済のかたち。</span>不便益化、人情化、地産地笑、郷愁化、自己実現。こうした感覚を大事にしながら、まわりの人の人生に長く伴走していきたい。
-        <span class="break"></span>
-        一度きりの人生、面白そうなことはやってみたい。これからもひとつずつ続けていく。<span class="strong">最後に「いい人生だったな」と思えていたら、それで十分だと思っている。</span>
+        <span class="br"></span>
+        <span class="em">「情緒経済」——効率や利益だけでなく、人の心や感情そのものを価値の源泉にする経済のかたち。</span>デジタルはアナログを壊すのではない。アナログを守り、伸ばすための武器だ。
+        <span class="br"></span>
+        一度きりの人生、面白そうなことはやってみたい。<span class="strong">最後に「いい人生だったな」と思えていたら、それで十分だと思っている。</span>
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- ═══ VALUES ═══ -->
-<div class="section fade-in" id="values">
-  <div class="eyebrow">Values</div>
+<!-- WHAT intro -->
+<div class="bg-cream-dark" id="what">
+  <div class="what-intro fade-in">
+    <div class="eyebrow on-cream">WHAT — いま、やっていること</div>
+    <p class="what-tagline">
+      AIで弁当のフライヤーを作っている裏で、<br>100食の弁当を一緒に作る。
+    </p>
+    <p class="what-desc">
+      デジタルと現場の両方で動く。それが小池雄悟の事業スタイル。
+    </p>
+  </div>
+</div>
 
-  <div class="values-quote">
-    「情緒経済」——効率や利益を追求するのではなく、<br>
-    人の心や感情そのものを価値とする。
+<!-- WHAT 2面 -->
+<div class="dual-wrap fade-in">
+  <div class="dual-panel digital">
+    <span class="panel-label">デジたる</span>
+    <h3 class="panel-heading">AIと仕組みで、<br>本来の仕事に戻す。</h3>
+    <p class="panel-sub">
+      志がある人が作業に追われている。<br>
+      AIで時間を取り戻し、人間らしい仕事に集中できる状態を作る。
+    </p>
+    <ul class="biz-list">
+      <li class="biz-item">
+        <div class="biz-item-role">CEO — 株式会社YUMEMATCH</div>
+        <div class="biz-item-name">AI時短設計室</div>
+        <div class="biz-item-desc">個人事業主・小規模法人の業務をAIで設計する継続伴走型サービス。アナログ業界特化。月3万円〜。</div>
+      </li>
+      <li class="biz-item">
+        <div class="biz-item-role">YUMEMATCH</div>
+        <div class="biz-item-name">Pharma Eight∞</div>
+        <div class="biz-item-desc">薬剤師×AI×複業。「処方される側の人生から、自分で処方する人生へ。」薬剤師の力を活かすプロデュース軸。</div>
+      </li>
+      <li class="biz-item">
+        <div class="biz-item-role">YUMEMATCH</div>
+        <div class="biz-item-name">ビジネスコーチング / 事業開発</div>
+        <div class="biz-item-desc">個人・組織の「これをやりたい」を、現実の事業として成立させる伴走支援。</div>
+      </li>
+    </ul>
   </div>
 
-  <div class="values-grid">
-    <div class="val-card">
-      <div class="val-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+  <div class="dual-panel analog">
+    <span class="panel-label">アナろぐ</span>
+    <h3 class="panel-heading">体と心で動く、<br>人間らしい現場。</h3>
+    <p class="panel-sub">
+      直接人と向き合い、物を作り、<br>
+      地域とつながる事業を運営している。
+    </p>
+    <ul class="biz-list">
+      <li class="biz-item">
+        <div class="biz-item-role">代表 — はなひらくグループ</div>
+        <div class="biz-item-name">障がい福祉 / 製菓 / 農</div>
+        <div class="biz-item-desc">就労支援B型・グループホーム・叶花-kanoka-・花咲く弁当・水耕栽培プラント。可能性を花ひらかせる場。</div>
+      </li>
+      <li class="biz-item">
+        <div class="biz-item-role">代表 — 未来設計Lab. 炉-irori-</div>
+        <div class="biz-item-name">ライフデザイン / FP</div>
+        <div class="biz-item-desc">住宅・保険・相続・資産形成。人の人生に長く伴走するFP事務所。長野・松本拠点。</div>
+      </li>
+      <li class="biz-item">
+        <div class="biz-item-role">COO / 執行役員</div>
+        <div class="biz-item-name">松本調剤薬局 / FMI</div>
+        <div class="biz-item-desc">地域密着型調剤薬局の経営支援。地域医療・福祉・財務戦略に参画。</div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div class="bg-navy">
+  <div class="section fade-in">
+    <div class="eyebrow on-navy">Gallery — はなひらくグループ</div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="gallery/kanoka.png" alt="叶花 -kanoka-"></div>
+      <div class="gallery-item"><img src="gallery/kanoka2.jpg" alt="叶花 -kanoka-"></div>
+      <div class="gallery-item"><img src="gallery/hanasaku_bento.png" alt="花咲く弁当"></div>
+      <div class="gallery-item"><img src="gallery/hydroponics.jpg" alt="水耕栽培プラント"></div>
+      <div class="gallery-item"><img src="gallery/photo01.jpg" alt="はなひらくグループ"></div>
+      <div class="gallery-item"><img src="gallery/photo02.jpg" alt="はなひらくグループ"></div>
+    </div>
+  </div>
+</div>
+
+<!-- VISION -->
+<div class="bg-navy" id="vision">
+  <div class="section fade-in">
+    <div class="eyebrow on-navy">VISION — 目指す世界</div>
+    <div class="vision-quote">
+      アナログ業界が、デジタルを手に入れて、<br>
+      思いのままに生きている社会。
+    </div>
+    <div class="values-grid">
+      <div class="val-card">
+        <h4>情緒化</h4>
+        <p>AIに雑務を渡した先に生まれる、人間らしさを取り戻すこと</p>
       </div>
-      <div>
+      <div class="val-card">
         <h4>不便益化</h4>
-        <p>あえて手間をかけることで得られる心の豊かさや、本質的な価値を追求する</p>
+        <p>あえて不便を残す設計。「手書きのほうが伝わる」を意図的に選ぶ価値観</p>
       </div>
-    </div>
-    <div class="val-card">
-      <div class="val-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-      </div>
-      <div>
+      <div class="val-card">
         <h4>人情化</h4>
-        <p>デジタルにはない、心と心が通じ合う温かい人間関係を重視する</p>
+        <p>ビジネス関係を義理・人情・縁・信頼で満たすこと</p>
       </div>
-    </div>
-    <div class="val-card">
-      <div class="val-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      </div>
-      <div>
+      <div class="val-card">
         <h4>地産地笑</h4>
         <p>地域で作り、地域でこそ。共に喜びを分かち合う文化を創り出す</p>
       </div>
-    </div>
-    <div class="val-card">
-      <div class="val-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </div>
-      <div>
+      <div class="val-card">
         <h4>郷愁化</h4>
         <p>便利さが失わせた温かさや、昔ながらのコミュニティのつながりを再構築する</p>
       </div>
-    </div>
-    <div class="val-card">
-      <div class="val-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-      </div>
-      <div>
+      <div class="val-card">
         <h4>自己実現</h4>
         <p>関わるすべての人々が、それぞれの夢を叶えるプラットフォームとなる</p>
       </div>
@@ -1406,45 +875,41 @@ footer::before {
   </div>
 </div>
 
-<!-- ═══ CONTACT ═══ -->
-<div class="band" id="contact">
+<!-- CONTACT -->
+<div class="bg-cream" id="contact">
   <div class="section fade-in">
-    <div class="eyebrow">Contact</div>
-
+    <div class="eyebrow on-cream">CONTACT</div>
     <div class="contact-grid">
       <a href="mailto:y-koike@yumematch.com" class="ct-link">
         <div class="ct-icon">
-          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-width="1.5"/><polyline points="22,6 12,13 2,6" stroke-width="1.5"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </div>
         <div>
           <div class="ct-label">Email</div>
           <div class="ct-value">y-koike@yumematch.com</div>
         </div>
       </a>
-
       <a href="tel:090-9666-4632" class="ct-link">
         <div class="ct-icon">
-          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke-width="1.5"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         </div>
         <div>
           <div class="ct-label">Phone</div>
           <div class="ct-value">090-9666-4632</div>
         </div>
       </a>
-
-      <a href="https://line.me/ti/p/eMTAC1XOlT" class="ct-link">
+      <a href="https://line.me/ti/p/eMTAC1XOlT" class="ct-link" target="_blank" rel="noopener">
         <div class="ct-icon">
-          <svg viewBox="0 0 24 24" stroke-width="0" fill="var(--accent)"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+          <svg viewBox="0 0 24 24" stroke-width="0" fill="var(--mustard)"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
         </div>
         <div>
           <div class="ct-label">LINE</div>
           <div class="ct-value">友だち追加</div>
         </div>
       </a>
-
       <a href="https://www.google.com/maps/search/?api=1&query=%E9%95%B7%E9%87%8E%E7%9C%8C%E6%9D%BE%E6%9C%AC%E5%B8%82%E5%AF%BF%E5%8C%97%EF%BC%97%E4%B8%81%E7%9B%AE%EF%BC%91%EF%BC%90%E2%88%92%EF%BC%91%EF%BC%91" class="ct-link" target="_blank" rel="noopener">
         <div class="ct-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
         <div>
           <div class="ct-label">Address</div>
@@ -1455,147 +920,31 @@ footer::before {
   </div>
 </div>
 
-<!-- ═══ FOOTER ═══ -->
+<!-- FOOTER -->
 <footer>
-  <div class="footer-tagline">情緒経済を生きる。</div>
-  &copy; 2026 Yugo Koike. All rights reserved.
+  <p class="footer-tagline">デジたる。アナろぐ。</p>
+  <p class="footer-copy">&copy; 2026 Yugo Koike. All rights reserved.</p>
 </footer>
 
-<!-- ═══ BACK TO TOP ═══ -->
+<!-- BACK TO TOP -->
 <button class="back-to-top" id="backToTop" aria-label="トップへ戻る">
   <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
 <script>
-// ─── Intersection Observer (fade-in) ───
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), i * 80);
-    }
-  });
-}, { threshold: 0.12 });
-
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 
-// ─── Nav & Back-to-top show/hide ───
 const nav = document.getElementById('siteNav');
-const backToTop = document.getElementById('backToTop');
+const btt = document.getElementById('backToTop');
 const hero = document.getElementById('hero');
-
-const scrollHandler = () => {
-  const heroH = hero.offsetHeight * 0.6;
-  const scrolled = window.scrollY > heroH;
-  nav.classList.toggle('visible', scrolled);
-  backToTop.classList.toggle('visible', window.scrollY > 400);
-};
-
-window.addEventListener('scroll', scrollHandler, { passive: true });
-
-backToTop.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// ─── Carousel (infinite loop) ───
-(function() {
-  const track = document.getElementById('carouselTrack');
-  const dotsWrap = document.getElementById('carouselDots');
-  const prevBtn = document.querySelector('.carousel-prev');
-  const nextBtn = document.querySelector('.carousel-next');
-
-  const origSlides = [...track.querySelectorAll('.carousel-slide')];
-  const N = origSlides.length;
-
-  // 前後にクローンを追加して無限ループを実現
-  origSlides.forEach(s => track.appendChild(s.cloneNode(true)));
-  origSlides.forEach(s => track.insertBefore(s.cloneNode(true), track.firstChild));
-  // レイアウト: [N clones] [N real] [N clones]  合計3N
-
-  const allSlides = [...track.querySelectorAll('.carousel-slide')];
-  let current = N; // 最初のリアルスライド
-  let timer;
-  let jumping = false;
-
-  // ドット（リアルスライド分のみ）
-  for (let i = 0; i < N; i++) {
-    const dot = document.createElement('button');
-    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-    dot.addEventListener('click', () => goTo(i + N));
-    dotsWrap.appendChild(dot);
-  }
-
-  function realIdx() {
-    return ((current - N) % N + N) % N;
-  }
-
-  function setPosition(animate) {
-    const slideW = allSlides[0].offsetWidth;
-    const gap = 16;
-    const wrapW = track.parentElement.offsetWidth;
-    const center = (wrapW - slideW) / 2;
-    const offset = -(current * (slideW + gap)) + center;
-
-    if (!animate) {
-      track.style.transition = 'none';
-      track.style.transform = `translateX(${offset}px)`;
-      track.offsetHeight; // reflow
-      track.style.transition = '';
-    } else {
-      track.style.transform = `translateX(${offset}px)`;
-    }
-
-    allSlides.forEach((s, i) => s.classList.toggle('active', i === current));
-    const ri = realIdx();
-    dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) =>
-      d.classList.toggle('active', i === ri)
-    );
-  }
-
-  function goTo(idx) {
-    if (jumping) return;
-    current = idx;
-    setPosition(true);
-    resetTimer();
-
-    // アニメーション完了後、クローン領域にいたらリアル領域にジャンプ
-    jumping = true;
-    setTimeout(() => {
-      if (current < N) {
-        current += N;
-        setPosition(false);
-      } else if (current >= 2 * N) {
-        current -= N;
-        setPosition(false);
-      }
-      jumping = false;
-    }, 530);
-  }
-
-  function resetTimer() {
-    clearInterval(timer);
-    timer = setInterval(() => goTo(current + 1), 4000);
-  }
-
-  prevBtn.addEventListener('click', () => goTo(current - 1));
-  nextBtn.addEventListener('click', () => goTo(current + 1));
-
-  let startX = 0;
-  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-  track.addEventListener('touchend', e => {
-    const diff = startX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
-  });
-
-  window.addEventListener('resize', () => setPosition(false));
-
-  function init() {
-    setPosition(false);
-    resetTimer();
-  }
-
-  document.readyState === 'complete' ? init() : window.addEventListener('load', init);
-})();
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('visible', window.scrollY > hero.offsetHeight * 0.6);
+  btt.classList.toggle('visible', window.scrollY > 500);
+}, { passive: true });
+btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 </script>
-
 </body>
 </html>
