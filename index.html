@@ -297,12 +297,17 @@ section{position:relative;z-index:2}
 .of-lede{font-size:clamp(15px,1.9vw,18px);font-weight:600;letter-spacing:.08em;line-height:2;max-width:22em}
 .of-list{list-style:none;margin-top:clamp(18px,3vh,28px)}
 .of-list li{
-  display:flex;align-items:baseline;gap:16px;
-  padding:11px 4px;border-bottom:1px solid var(--line);
+  display:grid;grid-template-columns:15px auto 1fr;column-gap:12px;align-items:baseline;
+  padding:12px 4px;border-bottom:1px solid var(--line);
 }
-.of-list li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);align-self:center;flex:0 0 auto}
+.of-list li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);align-self:center}
 .of-jp{font-size:15px;font-weight:600;letter-spacing:.14em}
-.of-en{margin-left:auto;font-family:var(--latin);font-style:italic;font-size:12px;color:var(--ink-soft);letter-spacing:.08em}
+.of-en{justify-self:end;font-family:var(--latin);font-style:italic;font-size:12px;color:var(--ink-soft);letter-spacing:.08em}
+.of-addr{
+  grid-column:2/4;margin-top:3px;
+  font-family:var(--sans);font-size:11px;letter-spacing:.06em;line-height:1.8;color:var(--ink-soft);
+}
+.of-map .dot.soon{fill:var(--paper);stroke:var(--accent);stroke-width:1.5}
 .of-map svg{width:100%;height:auto;display:block}
 .of-map .dot{fill:var(--accent)}
 .of-map .pulse{fill:none;stroke:var(--accent);stroke-width:1.5;opacity:0;animation:mapPulse 2.6s ease-out infinite}
@@ -631,11 +636,11 @@ footer{border-top:1px solid var(--line-strong);padding:clamp(56px,9vh,96px) 0 40
         <div class="of-info rv">
           <p class="of-lede">キャリアプランナー・ファイナンシャルプランナー事務所を、全国5都市に展開。</p>
           <ul class="of-list">
-            <li><span class="of-jp">長野</span><span class="of-en">Nagano</span></li>
-            <li><span class="of-jp">東京</span><span class="of-en">Tokyo</span></li>
-            <li><span class="of-jp">横浜</span><span class="of-en">Yokohama</span></li>
-            <li><span class="of-jp">大阪</span><span class="of-en">Osaka</span></li>
-            <li><span class="of-jp">福岡</span><span class="of-en">Fukuoka</span></li>
+            <li><span class="of-jp">長野</span><span class="of-en">Nagano</span><span class="of-addr">松本市大字笹賀5929-8</span></li>
+            <li><span class="of-jp">東京</span><span class="of-en">Tokyo</span><span class="of-addr">東京都中央区日本橋本石町4-2-2 USビル301</span></li>
+            <li><span class="of-jp">神奈川</span><span class="of-en">Kanagawa</span><span class="of-addr">神奈川県横浜市南区前里町1-4-3 黄金町駅前ビル4F</span></li>
+            <li><span class="of-jp">大阪</span><span class="of-en">Osaka</span><span class="of-addr">大阪府大阪市北区芝田2丁目3-16</span></li>
+            <li><span class="of-jp">福岡</span><span class="of-en">Fukuoka</span><span class="of-addr">（準備中）</span></li>
           </ul>
         </div>
         <figure class="of-map rv rv-d1" aria-label="拠点マップ：長野・東京・横浜・大阪・福岡">
@@ -656,12 +661,12 @@ footer{border-top:1px solid var(--line-strong);padding:clamp(56px,9vh,96px) 0 40
               <text x="418" y="240">東京</text>
               <circle class="pulse" cx="390" cy="262" r="5"/>
               <circle class="dot" cx="390" cy="262" r="4.5"/>
-              <text x="406" y="272">横浜</text>
+              <text x="406" y="272">神奈川</text>
               <circle class="pulse" cx="296" cy="296" r="5"/>
               <circle class="dot" cx="296" cy="296" r="4.5"/>
               <text x="296" y="274" text-anchor="middle">大阪</text>
               <circle class="pulse" cx="136" cy="350" r="5"/>
-              <circle class="dot" cx="136" cy="350" r="4.5"/>
+              <circle class="dot soon" cx="136" cy="350" r="4.5"/>
               <text x="120" y="342" text-anchor="end">福岡</text>
             </g>
           </svg>
