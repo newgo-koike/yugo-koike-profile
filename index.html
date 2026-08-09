@@ -308,6 +308,19 @@ section{position:relative;z-index:2}
   font-family:var(--sans);font-size:11px;letter-spacing:.06em;line-height:1.8;color:var(--ink-soft);
 }
 .of-map .dot.soon{fill:var(--paper);stroke:var(--accent);stroke-width:1.5}
+.of-map .dot.partner{fill:#8a8072}
+.of-map .cty text.pt{fill:var(--ink-soft);font-size:13.5px;font-weight:500}
+.of-sub{margin-top:clamp(24px,4vh,34px)}
+.of-list.partner li::before{background:#8a8072}
+.of-legend{
+  display:flex;justify-content:center;gap:22px;margin-top:12px;
+  font-family:var(--sans);font-size:10px;letter-spacing:.12em;color:var(--ink-soft);
+}
+.of-legend span{display:flex;align-items:center;gap:7px}
+.of-legend .lg{width:8px;height:8px;border-radius:50%;display:inline-block}
+.of-legend .lg-main{background:var(--accent)}
+.of-legend .lg-partner{background:#8a8072}
+.of-legend .lg-soon{background:var(--paper);border:1.5px solid var(--accent)}
 .of-map svg{width:100%;height:auto;display:block}
 .of-map .land{fill:#1b1813;fill-opacity:.09}
 .of-map .dot{fill:var(--accent)}
@@ -635,13 +648,20 @@ footer{border-top:1px solid var(--line-strong);padding:clamp(56px,9vh,96px) 0 40
       </div>
       <div class="of-grid">
         <div class="of-info rv">
-          <p class="of-lede">キャリアプランナー・ファイナンシャルプランナー事務所を、全国5都市に展開。</p>
+          <p class="of-lede">キャリアプランナー・ファイナンシャルプランナー事務所を、提携事務所を含め全国9都市に展開。</p>
           <ul class="of-list">
             <li><span class="of-jp">長野</span><span class="of-en">Nagano</span><span class="of-addr">松本市大字笹賀5929-8</span></li>
             <li><span class="of-jp">東京</span><span class="of-en">Tokyo</span><span class="of-addr">東京都中央区日本橋本石町4-2-2 USビル301</span></li>
             <li><span class="of-jp">神奈川</span><span class="of-en">Kanagawa</span><span class="of-addr">神奈川県横浜市南区前里町1-4-3 黄金町駅前ビル4F</span></li>
             <li><span class="of-jp">大阪</span><span class="of-en">Osaka</span><span class="of-addr">大阪府大阪市北区芝田2丁目3-16</span></li>
             <li><span class="of-jp">福岡</span><span class="of-en">Fukuoka</span><span class="of-addr">（準備中）</span></li>
+          </ul>
+          <p class="label of-sub">Partner Offices — 提携事務所</p>
+          <ul class="of-list partner">
+            <li><span class="of-jp">愛知</span><span class="of-en">Aichi</span><span class="of-addr">〒460-0002 愛知県名古屋市中区丸の内2丁目2-5 丸の内ヒビノオフィスラインズ6A</span></li>
+            <li><span class="of-jp">岐阜</span><span class="of-en">Gifu</span><span class="of-addr">〒500-8384 岐阜県岐阜市薮田南1丁目3-12 1F</span></li>
+            <li><span class="of-jp">広島</span><span class="of-en">Hiroshima</span><span class="of-addr">〒732-0817 広島市南区比治山町3-14 ダイアパレスリバーサイド比治山207</span></li>
+            <li><span class="of-jp">鹿児島</span><span class="of-en">Kagoshima</span><span class="of-addr">〒892-0816 鹿児島県鹿児島市山下町17-4 第一照国ビル304</span></li>
           </ul>
         </div>
         <figure class="of-map rv rv-d1" aria-label="拠点マップ：長野・東京・横浜・大阪・福岡">
@@ -667,8 +687,24 @@ footer{border-top:1px solid var(--line-strong);padding:clamp(56px,9vh,96px) 0 40
               <circle class="pulse" cx="61" cy="305" r="5"/>
               <circle class="dot soon" cx="61" cy="305" r="4.5"/>
               <text x="48" y="298" text-anchor="end">福岡</text>
+              <line x1="186" y1="273" x2="194" y2="292" stroke="#a39a8d" stroke-width="1"/>
+              <circle class="dot partner" cx="182" cy="268" r="4"/>
+              <text class="pt" x="198" y="302">愛知</text>
+              <line x1="176" y1="259" x2="162" y2="248" stroke="#a39a8d" stroke-width="1"/>
+              <circle class="dot partner" cx="180" cy="263" r="4"/>
+              <text class="pt" x="158" y="244" text-anchor="end">岐阜</text>
+              <line x1="100" y1="281" x2="98" y2="270" stroke="#a39a8d" stroke-width="1"/>
+              <circle class="dot partner" cx="100" cy="286" r="4"/>
+              <text class="pt" x="97" y="262" text-anchor="middle">広島</text>
+              <circle class="dot partner" cx="64" cy="351" r="4"/>
+              <text class="pt" x="52" y="358" text-anchor="end">鹿児島</text>
             </g>
           </svg>
+          <figcaption class="of-legend">
+            <span><i class="lg lg-main"></i>事務所拠点</span>
+            <span><i class="lg lg-partner"></i>提携事務所</span>
+            <span><i class="lg lg-soon"></i>準備中</span>
+          </figcaption>
         </figure>
       </div>
     </div>
