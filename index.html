@@ -283,6 +283,39 @@ section{position:relative;z-index:2}
   margin-top:clamp(28px,4.5vh,44px);
   font-family:var(--sans);font-size:11px;letter-spacing:.12em;line-height:1.9;color:var(--ink-soft);
 }
+
+/* ---------- offices map ---------- */
+.offices{margin-top:clamp(48px,7vh,72px);border-top:1px solid var(--line);padding-top:clamp(32px,5vh,48px)}
+.of-grid{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,430px);
+  gap:clamp(28px,5vw,72px);align-items:center;margin-top:clamp(24px,4vh,36px);
+}
+@media(max-width:760px){
+  .of-grid{grid-template-columns:1fr;gap:8px}
+  .of-map{max-width:340px;margin:0 auto}
+}
+.of-lede{font-size:clamp(15px,1.9vw,18px);font-weight:600;letter-spacing:.08em;line-height:2;max-width:22em}
+.of-list{list-style:none;margin-top:clamp(18px,3vh,28px)}
+.of-list li{
+  display:flex;align-items:baseline;gap:16px;
+  padding:11px 4px;border-bottom:1px solid var(--line);
+}
+.of-list li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);align-self:center;flex:0 0 auto}
+.of-jp{font-size:15px;font-weight:600;letter-spacing:.14em}
+.of-en{margin-left:auto;font-family:var(--latin);font-style:italic;font-size:12px;color:var(--ink-soft);letter-spacing:.08em}
+.of-map svg{width:100%;height:auto;display:block}
+.of-map .dot{fill:var(--accent)}
+.of-map .pulse{fill:none;stroke:var(--accent);stroke-width:1.5;opacity:0;animation:mapPulse 2.6s ease-out infinite}
+.of-map .cty text{
+  font-family:var(--serif);font-size:15px;font-weight:600;letter-spacing:.12em;fill:var(--ink);
+}
+.of-map .cty circle.pulse:nth-of-type(1){animation-delay:0s}
+@keyframes mapPulse{
+  0%{r:5;opacity:.7}
+  70%{r:14;opacity:0}
+  100%{r:14;opacity:0}
+}
+@media(prefers-reduced-motion:reduce){.of-map .pulse{animation:none}}
 .ccard{
   border:1px solid var(--line-strong);background:var(--paper);
   padding:clamp(24px,3.4vw,34px) clamp(20px,2.8vw,28px);
@@ -589,6 +622,52 @@ footer{border-top:1px solid var(--line-strong);padding:clamp(56px,9vh,96px) 0 40
     </div>
 
     <p class="career-note rv">※ 薬剤師・看護師のほか、その他の医療職種のキャリア相談にも対応可能です。</p>
+
+    <div class="offices">
+      <div class="of-head rv">
+        <span class="label">Offices — 事務所拠点</span>
+      </div>
+      <div class="of-grid">
+        <div class="of-info rv">
+          <p class="of-lede">キャリアプランナー・ファイナンシャルプランナー事務所を、全国5都市に展開。</p>
+          <ul class="of-list">
+            <li><span class="of-jp">長野</span><span class="of-en">Nagano</span></li>
+            <li><span class="of-jp">東京</span><span class="of-en">Tokyo</span></li>
+            <li><span class="of-jp">横浜</span><span class="of-en">Yokohama</span></li>
+            <li><span class="of-jp">大阪</span><span class="of-en">Osaka</span></li>
+            <li><span class="of-jp">福岡</span><span class="of-en">Fukuoka</span></li>
+          </ul>
+        </div>
+        <figure class="of-map rv rv-d1" aria-label="拠点マップ：長野・東京・横浜・大阪・福岡">
+          <svg viewBox="0 0 520 470" xmlns="http://www.w3.org/2000/svg" role="img">
+            <g fill="none" stroke="#1b1813" stroke-opacity=".1" stroke-linecap="round">
+              <path d="M 430 102 C 438 84 456 68 476 62" stroke-width="30"/>
+              <path d="M 428 138 C 424 200 386 252 330 280 C 270 308 208 322 150 336" stroke-width="30"/>
+              <path d="M 236 350 C 254 342 274 340 290 344" stroke-width="16"/>
+              <path d="M 128 356 C 114 382 112 408 124 430" stroke-width="24"/>
+            </g>
+            <g class="cty">
+              <line x1="352" y1="248" x2="348" y2="236" stroke="#6d655a" stroke-width="1"/>
+              <circle class="pulse" cx="352" cy="252" r="5"/>
+              <circle class="dot" cx="352" cy="252" r="4.5"/>
+              <text x="346" y="228" text-anchor="middle">長野</text>
+              <circle class="pulse" cx="402" cy="242" r="5"/>
+              <circle class="dot" cx="402" cy="242" r="4.5"/>
+              <text x="418" y="240">東京</text>
+              <circle class="pulse" cx="390" cy="262" r="5"/>
+              <circle class="dot" cx="390" cy="262" r="4.5"/>
+              <text x="406" y="272">横浜</text>
+              <circle class="pulse" cx="296" cy="296" r="5"/>
+              <circle class="dot" cx="296" cy="296" r="4.5"/>
+              <text x="296" y="274" text-anchor="middle">大阪</text>
+              <circle class="pulse" cx="136" cy="350" r="5"/>
+              <circle class="dot" cx="136" cy="350" r="4.5"/>
+              <text x="120" y="342" text-anchor="end">福岡</text>
+            </g>
+          </svg>
+        </figure>
+      </div>
+    </div>
   </div>
 </section>
 
