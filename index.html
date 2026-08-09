@@ -297,14 +297,15 @@ section{position:relative;z-index:2}
 .of-lede{font-size:clamp(15px,1.9vw,18px);font-weight:600;letter-spacing:.08em;line-height:2;max-width:22em}
 .of-list{list-style:none;margin-top:clamp(18px,3vh,28px)}
 .of-list li{
-  display:grid;grid-template-columns:15px auto 1fr;column-gap:12px;align-items:baseline;
+  display:grid;grid-template-columns:15px auto 1fr auto;column-gap:12px;align-items:baseline;
   padding:12px 4px;border-bottom:1px solid var(--line);
 }
+.of-name{font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--ink)}
 .of-list li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);align-self:center}
 .of-jp{font-size:15px;font-weight:600;letter-spacing:.14em}
 .of-en{justify-self:end;font-family:var(--latin);font-style:italic;font-size:12px;color:var(--ink-soft);letter-spacing:.08em}
 .of-addr{
-  grid-column:2/4;margin-top:3px;
+  grid-column:2/5;margin-top:3px;
   font-family:var(--sans);font-size:11px;letter-spacing:.06em;line-height:1.8;color:var(--ink-soft);
 }
 .of-map .dot.soon{fill:var(--paper);stroke:var(--accent);stroke-width:1.5}
@@ -650,18 +651,18 @@ footer{border-top:1px solid var(--line-strong);padding:clamp(56px,9vh,96px) 0 40
         <div class="of-info rv">
           <p class="of-lede">キャリアプランナー・ファイナンシャルプランナー事務所を、提携事務所を含め全国9都市に展開。</p>
           <ul class="of-list">
-            <li><span class="of-jp">長野</span><span class="of-en">Nagano</span><span class="of-addr">松本市大字笹賀5929-8</span></li>
-            <li><span class="of-jp">東京</span><span class="of-en">Tokyo</span><span class="of-addr">東京都中央区日本橋本石町4-2-2 USビル301</span></li>
-            <li><span class="of-jp">神奈川</span><span class="of-en">Kanagawa</span><span class="of-addr">神奈川県横浜市南区前里町1-4-3 黄金町駅前ビル4F</span></li>
-            <li><span class="of-jp">大阪</span><span class="of-en">Osaka</span><span class="of-addr">大阪府大阪市北区芝田2丁目3-16</span></li>
+            <li><span class="of-jp">長野</span><span class="of-name">炉-irori-事務所</span><span class="of-en">Nagano</span><span class="of-addr">松本市大字笹賀5929-8</span></li>
+            <li><span class="of-jp">東京</span><span class="of-name">ラトラクロス事務所</span><span class="of-en">Tokyo</span><span class="of-addr">東京都中央区日本橋本石町4-2-2 USビル301</span></li>
+            <li><span class="of-jp">神奈川</span><span class="of-name">アルカ事務所</span><span class="of-en">Kanagawa</span><span class="of-addr">神奈川県横浜市南区前里町1-4-3 黄金町駅前ビル4F</span></li>
+            <li><span class="of-jp">大阪</span><span class="of-name">アセット事務所</span><span class="of-en">Osaka</span><span class="of-addr">大阪府大阪市北区芝田2丁目3-16</span></li>
             <li><span class="of-jp">福岡</span><span class="of-en">Fukuoka</span><span class="of-addr">（準備中）</span></li>
           </ul>
           <p class="label of-sub">Partner Offices — 提携事務所</p>
           <ul class="of-list partner">
-            <li><span class="of-jp">愛知</span><span class="of-en">Aichi</span><span class="of-addr">〒460-0002 愛知県名古屋市中区丸の内2丁目2-5 丸の内ヒビノオフィスラインズ6A</span></li>
-            <li><span class="of-jp">岐阜</span><span class="of-en">Gifu</span><span class="of-addr">〒500-8384 岐阜県岐阜市薮田南1丁目3-12 1F</span></li>
-            <li><span class="of-jp">広島</span><span class="of-en">Hiroshima</span><span class="of-addr">〒732-0817 広島市南区比治山町3-14 ダイアパレスリバーサイド比治山207</span></li>
-            <li><span class="of-jp">鹿児島</span><span class="of-en">Kagoshima</span><span class="of-addr">〒892-0816 鹿児島県鹿児島市山下町17-4 第一照国ビル304</span></li>
+            <li><span class="of-jp">愛知</span><span class="of-name">オリビア事務所</span><span class="of-en">Aichi</span><span class="of-addr">〒460-0002 愛知県名古屋市中区丸の内2丁目2-5 丸の内ヒビノオフィスラインズ6A</span></li>
+            <li><span class="of-jp">岐阜</span><span class="of-name">みのり-minori-事務所</span><span class="of-en">Gifu</span><span class="of-addr">〒500-8384 岐阜県岐阜市薮田南1丁目3-12 1F</span></li>
+            <li><span class="of-jp">広島</span><span class="of-name">テゴリス事務所</span><span class="of-en">Hiroshima</span><span class="of-addr">〒732-0817 広島市南区比治山町3-14 ダイアパレスリバーサイド比治山207</span></li>
+            <li><span class="of-jp">鹿児島</span><span class="of-name">緯-yokoito-事務所</span><span class="of-en">Kagoshima</span><span class="of-addr">〒892-0816 鹿児島県鹿児島市山下町17-4 第一照国ビル304</span></li>
           </ul>
         </div>
         <figure class="of-map rv rv-d1" aria-label="拠点マップ：長野・東京・横浜・大阪・福岡">
